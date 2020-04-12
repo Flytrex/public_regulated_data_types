@@ -22,7 +22,7 @@ bool motor_wire_break
 bool phase_a_issue
 bool phase_b_issue
 bool phase_c_issue
-bool dirction_flag
+bool direction_flag
 bool overvoltage
 bool undervoltage
 bool overcurrent
