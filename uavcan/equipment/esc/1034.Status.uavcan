@@ -14,3 +14,20 @@ int18 rpm                   # Negative value indicates reverse rotation
 uint7 power_rating_pct      # Instant demand factor in percent (percent of maximum power); range 0% to 127%.
 
 uint5 esc_index
+
+bool blocked
+bool h_bridge_break
+bool h_bridge_short_circuit
+bool motor_wire_break
+bool phase_a_issue
+bool phase_b_issue
+bool phase_c_issue
+bool dirction_flag
+bool overvoltage
+bool undervoltage
+bool overcurrent
+bool throttle_status
+bool lose_signal
+bool stick_not_bottom
+bool mos_overheat
+bool capacitor_overheat
