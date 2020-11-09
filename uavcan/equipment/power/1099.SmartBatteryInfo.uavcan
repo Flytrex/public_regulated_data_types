@@ -16,7 +16,7 @@ uint8 lifetime                          # [%]
 uint8[5] info_unk5
 uint16 version_unk1
 uint16 made_year
-uint8[6] vesrion_unk2
+uint8[6] version_unk2
 uint8[14] serial_num
 uint8 battery_id                        # Identifies the battery within this vehicle, e.g. 0 - primary battery
 uint8[<32] model_name                   # Battery model name
