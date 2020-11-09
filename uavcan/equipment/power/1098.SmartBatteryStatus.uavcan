@@ -2,12 +2,17 @@
 # Single smart battery status.
 #
 
+uint8 unk1
 uint16 temperature                      # [Deci-Kelvin]
 uint16 Vpack                            # [Milli-Volt]
 int32 current1                          # [Milli-Amper]
 int32 current2                          # [Milli-Amper]
 uint7 state_of_charge_pct               # Percent of the full charge [0, 100]. This field is required
+uint8 unk2
 uint16[6] Vcell                         # Individual cell voltages [Milli-Volt]
+uint16 unk3
+uint8 unk4
+uint8 unk5
 bool is_shutting_down
 bool is_on
 uint8 battery_id                        # Identifies the battery within this vehicle, e.g. 0 - primary battery
