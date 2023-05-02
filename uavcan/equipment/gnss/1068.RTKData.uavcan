@@ -1,0 +1,7 @@
+#
+# RTK message for injecting into the onboard GPS (used for DGPS)
+#
+      
+uint32 sequence_id    # ID of the inner RTK message
+uint8 fragment_id     # ID of an RTK message fragment
+uint8[<=240] data     # RTK message payload (may be fragmented)
