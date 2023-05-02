@@ -1,0 +1,7 @@
+#
+# Genral metadata of RTK message for injecting into the onboard GPS (used for DGPS).
+#
+
+uint32 sequence_id    # ID of the inner RTK message
+uint16 total_length   # Total data length
+uint32 crc            # CRC32 of the payload
