@@ -4,50 +4,57 @@
 #
 
 float32 charge_intergrator_ah
-uint8 cfet_temp_dc
-uint8 dfet_temp_dc
-uint8 pcb_temp_bq_dc
-uint8 rear_cell_temp_dc
-uint8 front_cell_temp_dc
+float16 cfet_temp_dc
+float16 dfet_temp_dc
+float16 pcb_temp_bq_dc
+float16 rear_cell_temp_dc
+float16 front_cell_temp_dc
 float16 load_voltage_v
 float16 charger_voltage_v
+float16 pack_voltage_v
+float16 current_a
 float16[12] cell_voltage_v
-uint8 relative_soc_pct
-uint8 non_clamped_soc
+uint7 relative_soc_pct
+float16 non_clamped_soc
 uint8 active_bq_alert_code
 
-uint32 OVERLOAD_CUV 							= 1 						# 
-uint32 OVERLOAD_OVC 							= 2 						# 
-uint32 OVERLOAD_COV 							= 4 						# 
-uint32 OVERLOAD_OTHER_HW 						= 8 						# 
-uint32 OVERLOAD_UNSAFE_TEMP 					= 16 						# 
-uint32 OVERLOAD_FORCED 							= 32 						# 
-uint32 BB_OVERLOADED 							= 64						# 
-uint32 BB_TOSF 									= 128						# 
-uint32 BB_SOH_LOW 								= 256						# 
-uint32 BB_FUSE_BLOWN 							= 512 						# 
-uint32 BB_FATAL_CUV 							= 1024 						# 
-uint32 BB_BAD_TEMP_SENSOR 						= 2048 						#	 
-uint32 BB_FATAL_OVERTEMP 						= 4096						# 
-uint32 BB_FATAL_COV 							= 8192 						# 
-uint32 NS_BALANCING 							= 16384 					# 
-uint32 NS_INTEGRATOR_RUNTIME 					= 32768						# 
-uint32 NS_INTEGRATOR_CONFIG_UPDATE 				= 64536 					# 
-uint32 NS_INTEGRATOR_UNRELIABLE 				= 131072 					# 
-uint32 NS_FORCED 								= 262144 					# 
-uint32 BMSE_BQ_COMM_FAILURE 					= 524288 					# 
-uint32 BMSE_OTHER 								= 1048576 					# 
-uint32 BMSE_NONSTANDARD_MODE 					= 2097152 					# 
-uint32 BMSE_CONFIG_UNACCEPTABLE 				= 4194304 					# 
-uint32 OBS_VOLTAGE_DIFFERENCE 					= 8388608 					# 
-uint32 OBS_SOC_DIFFERENCE 						= 16777216 					# 
-uint32 OBS_SOCDEV_DIFFERENCE 					= 33554432 					# 
-uint32 OBS_OVERHEAT 							= 67108864 					# 
-uint32 OBS_HW_LOCKOUT 							= 134217728 				# 
-uint32 OBS_LVP 									= 268435456 				# 
-uint32 CHG_TOO_HOT 								= 536870912 				# 
-uint32 CHG_TOO_COLD								= 1073741824 				#
-uint32 active_faults
+uint36 OVERLOAD_CUV 							= 1 						# 
+uint36 OVERLOAD_OVC 							= 2 						# 
+uint36 OVERLOAD_COV 							= 4 						# 
+uint36 OVERLOAD_OTHER_HW 						= 8 						# 
+uint36 OVERLOAD_UNSAFE_TEMP 					= 16 						# 
+uint36 OVERLOAD_FORCED 							= 32 						# 
+uint36 BB_OVERLOADED 							= 64						# 
+uint36 BB_TOSF 									= 128						# 
+uint36 BB_SOH_LOW 								= 256						# 
+uint36 BB_FUSE_BLOWN 							= 512 						# 
+uint36 BB_FATAL_CUV 							= 1024 						# 
+uint36 BB_BAD_TEMP_SENSOR 						= 2048 						#	 
+uint36 BB_FATAL_OVERTEMP 						= 4096						# 
+uint36 BB_FATAL_COV 							= 8192 						# 
+uint36 NS_BALANCING 							= 16384 					# 
+uint36 NS_INTEGRATOR_RUNTIME 					= 32768						# 
+uint36 NS_INTEGRATOR_CONFIG_UPDATE 				= 64536 					# 
+uint36 NS_INTEGRATOR_UNRELIABLE 				= 131072 					# 
+uint36 NS_FORCED 								= 262144 					# 
+uint36 BMSE_BQ_COMM_FAILURE 					= 524288 					# 
+uint36 BMSE_OTHER 								= 1048576 					# 
+uint36 BMSE_NONSTANDARD_MODE 					= 2097152 					# 
+uint36 BMSE_CONFIG_UNACCEPTABLE 				= 4194304 					# 
+uint36 OBS_VOLTAGE_DIFFERENCE 					= 8388608 					# 
+uint36 OBS_SOC_DIFFERENCE 						= 16777216 					# 
+uint36 OBS_SOCDEV_DIFFERENCE 					= 33554432 					# 
+uint36 OBS_OVERHEAT 							= 67108864 					# 
+uint36 OBS_HW_LOCKOUT 							= 134217728 				# 
+uint36 OBS_LVP 									= 268435456 				# 
+uint36 CHG_TOO_HOT 								= 536870912 				# 
+uint36 CHG_TOO_COLD								= 1073741824 				#
+uint36 TH_WARNING								= 2147483648				#
+uint36 TH_FATAL									= 4294967296				#
+uint36 TC_WARNING								= 8589934592 				#
+uint36 TC_FATAL									= 17179869184				#
+uint36 FORCED_OUTPUT_DISABLE                    = 34359738368               #
+uint36 active_faults
 
 uint16 balanced_cells
 float32 lifetime_charge_ah
