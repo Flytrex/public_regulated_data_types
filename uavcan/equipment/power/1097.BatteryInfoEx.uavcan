@@ -1,0 +1,54 @@
+#
+# Extended Battery Info for Flytrex Battery
+# https://docs.google.com/spreadsheets/d/1uEEfnQlMEymqpjMPGG-jhk5R2maAyZMZhrMTCv0htKY/edit#gid=1073892483
+#
+
+float32 charge_intergrator_ah
+uint8 cfet_temp_dc
+uint8 dfet_temp_dc
+uint8 pcb_temp_bq_dc
+uint8 rear_cell_temp_dc
+uint8 front_cell_temp_dc
+float16 load_voltage_v
+float16 charger_voltage_v
+float16[12] cell_voltage_v
+uint8 relative_soc_pct
+uint8 non_clamped_soc
+uint8 active_bq_alert_code
+
+uint32 OVERLOAD_CUV 							= 1 						# 
+uint32 OVERLOAD_OVC 							= 2 						# 
+uint32 OVERLOAD_COV 							= 4 						# 
+uint32 OVERLOAD_OTHER_HW 						= 8 						# 
+uint32 OVERLOAD_UNSAFE_TEMP 					= 16 						# 
+uint32 OVERLOAD_FORCED 							= 32 						# 
+uint32 BB_OVERLOADED 							= 64						# 
+uint32 BB_TOSF 									= 128						# 
+uint32 BB_SOH_LOW 								= 256						# 
+uint32 BB_FUSE_BLOWN 							= 512 						# 
+uint32 BB_FATAL_CUV 							= 1024 						# 
+uint32 BB_BAD_TEMP_SENSOR 						= 2048 						#	 
+uint32 BB_FATAL_OVERTEMP 						= 4096						# 
+uint32 BB_FATAL_COV 							= 8192 						# 
+uint32 NS_BALANCING 							= 16384 					# 
+uint32 NS_INTEGRATOR_RUNTIME 					= 32768						# 
+uint32 NS_INTEGRATOR_CONFIG_UPDATE 				= 64536 					# 
+uint32 NS_INTEGRATOR_UNRELIABLE 				= 131072 					# 
+uint32 NS_FORCED 								= 262144 					# 
+uint32 BMSE_BQ_COMM_FAILURE 					= 524288 					# 
+uint32 BMSE_OTHER 								= 1048576 					# 
+uint32 BMSE_NONSTANDARD_MODE 					= 2097152 					# 
+uint32 BMSE_CONFIG_UNACCEPTABLE 				= 4194304 					# 
+uint32 OBS_VOLTAGE_DIFFERENCE 					= 8388608 					# 
+uint32 OBS_SOC_DIFFERENCE 						= 16777216 					# 
+uint32 OBS_SOCDEV_DIFFERENCE 					= 33554432 					# 
+uint32 OBS_OVERHEAT 							= 67108864 					# 
+uint32 OBS_HW_LOCKOUT 							= 134217728 				# 
+uint32 OBS_LVP 									= 268435456 				# 
+uint32 CHG_TOO_HOT 								= 536870912 				# 
+uint32 CHG_TOO_COLD								= 1073741824 				#
+uint32 active_faults
+
+uint16 balanced_cells
+float32 lifetime_charge_ah
+uint32 bq_config_crc
