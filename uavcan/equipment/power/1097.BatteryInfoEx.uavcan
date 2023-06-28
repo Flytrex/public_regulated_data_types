@@ -14,6 +14,9 @@ float16 charger_voltage_v
 float16 pack_voltage_v
 float16 current_a
 float16[12] cell_voltage_v
+float16 max_cell_v
+float16 min_cell_v
+float16 stack_delta_v
 uint7 relative_soc_pct
 float16 non_clamped_soc
 uint8 active_bq_alert_code
