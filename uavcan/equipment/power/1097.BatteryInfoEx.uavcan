@@ -13,50 +13,50 @@ float16 front_cell_temp_dc                                                  # [Â
 float16 load_voltage_v                                                      # [V] Voltage at PACK+ connection
 float16 charger_voltage_v                                                   # [V] Voltage at CHARGE connection
 float16 pack_voltage_v                                                      # [V] Voltage of the cell stack
-float16 current_a                                                           # [V] Decision Current
+float16 current_a                                                           # [A] Decision Current (battery current averaged over 500 ms)
 float16[12] cell_voltage_v                                                  # [V] Per-cell voltages
 float16 max_cell_v                                                          # [V] Max cell voltage
 float16 min_cell_v                                                          # [V] Min cell voltage
 float16 stack_delta_v                                                       # [V] sum(cell_voltage_v) - pack_voltage_v
-uint7 relative_soc_pct                                                      # [%] Relative SoC (assumed 100% at charege voltage)
+uint7 relative_soc_pct                                                      # [%] Relative SoC (assumed 100% at charge voltage)
 float16 non_clamped_soc                                                     # [0..1] Intermediate SoC before clamping to [0..1]
 uint8 active_bq_alert_code                                                  # [Enum] BQ76952 highest priority active alert
 
-uint36 OVERLOAD_CUV 							= 1 						# OVERLOAD_CUV Cell Undervoltage
-uint36 OVERLOAD_OVC 							= 2 						# OVERLOAD_OVC Overcurrent
-uint36 OVERLOAD_COV 							= 4 						# OVERLOAD_COV Cell Overvoltage
-uint36 OVERLOAD_OTHER_HW 						= 8 						# OVERLOAD_OTHER_HW Other HW Failure
-uint36 OVERLOAD_UNSAFE_TEMP 					= 16 						# OVERLOAD_UNSAFE_TEMP Temperature Unsafe
-uint36 OVERLOAD_FORCED 							= 32 						# OVERLOAD_FORCED Forced Fault Injection
-uint36 BB_OVERLOADED 							= 64						# BB_OVERLOADED Battery operated outside operational limits
-uint36 BB_TOSF 									= 128						# BB_TOSF sum(cell_voltage_v) - pack_voltage_v too high
-uint36 BB_SOH_LOW 								= 256						# BB_SOH_LOW state of health too low
-uint36 BB_FUSE_BLOWN 							= 512 						# BB_FUSE_BLOWN Internal fuse blown
-uint36 BB_FATAL_CUV 							= 1024 						# BB_FATAL_CUV Fatal cell undervoltage
-uint36 BB_BAD_TEMP_SENSOR 						= 2048 						# BB_BAD_TEMP_SENSOR Faulty temperature sensor
-uint36 BB_FATAL_OVERTEMP 						= 4096						# BB_FATAL_OVERTEMP Fatal overtemperature
-uint36 BB_FATAL_COV 							= 8192 						# BB_FATAL_COV Fatal cell overvoltage 
-uint36 NS_BALANCING 							= 16384 					# NS_BALANCING Cell balancing required
-uint36 NS_INTEGRATOR_RUNTIME 					= 32768						# NS_INTEGRATOR_RUNTIME Integrator runtime too large
-uint36 NS_INTEGRATOR_CONFIG_UPDATE 				= 64536 					# NS_INTEGRATOR_CONFIG_UPDATE Config update, integrator unreliable
-uint36 NS_INTEGRATOR_UNRELIABLE 				= 131072 					# NS_INTEGRATOR_UNRELIABLE Integrator unreliable for other reasons 
-uint36 NS_FORCED 								= 262144 					# NS_FORCED Forced integrator unreliable
-uint36 BMSE_BQ_COMM_FAILURE 					= 524288 					# BMSE_BQ_COMM_FAILURE No communications with the BQ76952
-uint36 BMSE_OTHER 								= 1048576 					# BMSE_OTHER Other internal firmware fault
-uint36 BMSE_NONSTANDARD_MODE 					= 2097152 					# BMSE_NONSTANDARD_MODE Non-standard mode of operation 
-uint36 BMSE_CONFIG_UNACCEPTABLE 				= 4194304 					# BMSE_CONFIG_UNACCEPTABLE Invalid configuration
-uint36 OBS_VOLTAGE_DIFFERENCE 					= 8388608 					# OBS_VOLTAGE_DIFFERENCE Voltage diffrerence with other battery 
-uint36 OBS_SOC_DIFFERENCE 						= 16777216 					# OBS_SOC_DIFFERENCE SoC difference with other battery 
-uint36 OBS_SOCDEV_DIFFERENCE 					= 33554432 					# OBS_SOCDEV_DIFFERENCE SoC deviation difference with other battery
-uint36 OBS_OVERHEAT 							= 67108864 					# OBS_OVERHEAT This battery is too hot (can't connect to other battery)
-uint36 OBS_HW_LOCKOUT 							= 134217728 				# OBS_HW_LOCKOUT This battery is faulty (can't connect to other battery)
-uint36 OBS_LVP 									= 268435456 				# OBS_LVP Voltage present at load, but no CAN message from other battery
-uint36 CHG_TOO_HOT 								= 536870912 				# CHG_TOO_HOT Too hot for charging 
-uint36 CHG_TOO_COLD								= 1073741824 				# CHG_TOO_COLD Too cold for charging 
-uint36 TH_WARNING								= 2147483648				# TH_WARNING Overheat warning
-uint36 TH_FATAL									= 4294967296				# TH_FATAL Overheat fatal 
-uint36 TC_WARNING								= 8589934592 				# TC_WARNING Cold warning
-uint36 TC_FATAL									= 17179869184				# TC_FATAL Cold fatal 
+uint36 OVERLOAD_CUV                             = 1                         # OVERLOAD_CUV Cell Undervoltage
+uint36 OVERLOAD_OVC                             = 2                         # OVERLOAD_OVC Overcurrent
+uint36 OVERLOAD_COV                             = 4                         # OVERLOAD_COV Cell Overvoltage
+uint36 OVERLOAD_OTHER_HW                        = 8                         # OVERLOAD_OTHER_HW Other HW Failure
+uint36 OVERLOAD_UNSAFE_TEMP                     = 16                        # OVERLOAD_UNSAFE_TEMP Temperature Unsafe
+uint36 OVERLOAD_FORCED                          = 32                        # OVERLOAD_FORCED Forced Fault Injection
+uint36 BB_OVERLOADED                            = 64                        # BB_OVERLOADED Battery operated outside operational limits
+uint36 BB_TOSF                                  = 128                       # BB_TOSF sum(cell_voltage_v) - pack_voltage_v too high
+uint36 BB_SOH_LOW                               = 256                       # BB_SOH_LOW state of health too low
+uint36 BB_FUSE_BLOWN                            = 512                       # BB_FUSE_BLOWN Internal fuse blown
+uint36 BB_FATAL_CUV                             = 1024                      # BB_FATAL_CUV Fatal cell undervoltage
+uint36 BB_BAD_TEMP_SENSOR                       = 2048                      # BB_BAD_TEMP_SENSOR Faulty temperature sensor
+uint36 BB_FATAL_OVERTEMP                        = 4096                      # BB_FATAL_OVERTEMP Fatal overtemperature
+uint36 BB_FATAL_COV                             = 8192                      # BB_FATAL_COV Fatal cell overvoltage 
+uint36 NS_BALANCING                             = 16384                     # NS_BALANCING Cell balancing required
+uint36 NS_INTEGRATOR_RUNTIME                    = 32768                     # NS_INTEGRATOR_RUNTIME Integrator runtime too large
+uint36 NS_INTEGRATOR_CONFIG_UPDATE              = 64536                     # NS_INTEGRATOR_CONFIG_UPDATE Config update, integrator unreliable
+uint36 NS_INTEGRATOR_UNRELIABLE                 = 131072                    # NS_INTEGRATOR_UNRELIABLE Integrator unreliable for other reasons 
+uint36 NS_FORCED                                = 262144                    # NS_FORCED Forced integrator unreliable
+uint36 BMSE_BQ_COMM_FAILURE                     = 524288                    # BMSE_BQ_COMM_FAILURE No communications with the BQ76952
+uint36 BMSE_OTHER                               = 1048576                   # BMSE_OTHER Other internal firmware fault
+uint36 BMSE_NONSTANDARD_MODE                    = 2097152                   # BMSE_NONSTANDARD_MODE Non-standard mode of operation 
+uint36 BMSE_CONFIG_UNACCEPTABLE                 = 4194304                   # BMSE_CONFIG_UNACCEPTABLE Invalid configuration
+uint36 OBS_VOLTAGE_DIFFERENCE                   = 8388608                   # OBS_VOLTAGE_DIFFERENCE Voltage diffrerence with other battery 
+uint36 OBS_SOC_DIFFERENCE                       = 16777216                  # OBS_SOC_DIFFERENCE SoC difference with other battery 
+uint36 OBS_SOCDEV_DIFFERENCE                    = 33554432                  # OBS_SOCDEV_DIFFERENCE SoC deviation difference with other battery
+uint36 OBS_OVERHEAT                             = 67108864                  # OBS_OVERHEAT This battery is too hot (can't connect to other battery)
+uint36 OBS_HW_LOCKOUT                           = 134217728                 # OBS_HW_LOCKOUT This battery is faulty (can't connect to other battery)
+uint36 OBS_LVP                                  = 268435456                 # OBS_LVP Voltage present at load, but no CAN message from other battery
+uint36 CHG_TOO_HOT                              = 536870912                 # CHG_TOO_HOT Too hot for charging 
+uint36 CHG_TOO_COLD                             = 1073741824                # CHG_TOO_COLD Too cold for charging 
+uint36 TH_WARNING                               = 2147483648                # TH_WARNING Overheat warning
+uint36 TH_FATAL                                 = 4294967296                # TH_FATAL Overheat fatal 
+uint36 TC_WARNING                               = 8589934592                # TC_WARNING Cold warning
+uint36 TC_FATAL                                 = 17179869184               # TC_FATAL Cold fatal 
 uint36 FORCED_OUTPUT_DISABLE                    = 34359738368               # FORCED_OUTPUT_DISABLE Forced Output Disable fault injection active
 uint36 active_faults                                                        # Bitfield
 
