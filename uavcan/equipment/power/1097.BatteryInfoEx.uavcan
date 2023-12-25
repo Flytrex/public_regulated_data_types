@@ -1,0 +1,65 @@
+#
+# Extended Battery Info for Flytrex Battery
+# https://docs.google.com/spreadsheets/d/1uEEfnQlMEymqpjMPGG-jhk5R2maAyZMZhrMTCv0htKY/edit#gid=1073892483
+#
+
+float32 charge_intergrator_ah
+float16 cfet_temp_dc
+float16 dfet_temp_dc
+float16 pcb_temp_bq_dc
+float16 rear_cell_temp_dc
+float16 cell_board_temp_dc
+float16 front_cell_temp_dc
+float16 load_voltage_v
+float16 charger_voltage_v
+float16 pack_voltage_v
+float16 current_a
+float16[12] cell_voltage_v
+float16 max_cell_v
+float16 min_cell_v
+float16 stack_delta_v
+uint7 relative_soc_pct
+float16 non_clamped_soc
+uint8 active_bq_alert_code
+
+uint36 OVERLOAD_CUV 							= 1 						# OVERLOAD_CUV
+uint36 OVERLOAD_OVC 							= 2 						# OVERLOAD_OVC
+uint36 OVERLOAD_COV 							= 4 						# OVERLOAD_COV
+uint36 OVERLOAD_OTHER_HW 						= 8 						# OVERLOAD_OTHER_HW
+uint36 OVERLOAD_UNSAFE_TEMP 					= 16 						# OVERLOAD_UNSAFE_TEMP 
+uint36 OVERLOAD_FORCED 							= 32 						# OVERLOAD_FORCED
+uint36 BB_OVERLOADED 							= 64						# BB_OVERLOADED
+uint36 BB_TOSF 									= 128						# BB_TOSF
+uint36 BB_SOH_LOW 								= 256						# BB_SOH_LOW
+uint36 BB_FUSE_BLOWN 							= 512 						# BB_FUSE_BLOWN
+uint36 BB_FATAL_CUV 							= 1024 						# BB_FATAL_CUV
+uint36 BB_BAD_TEMP_SENSOR 						= 2048 						# BB_BAD_TEMP_SENSOR 
+uint36 BB_FATAL_OVERTEMP 						= 4096						# BB_FATAL_OVERTEMP
+uint36 BB_FATAL_COV 							= 8192 						# BB_FATAL_COV
+uint36 NS_BALANCING 							= 16384 					# NS_BALANCING
+uint36 NS_INTEGRATOR_RUNTIME 					= 32768						# NS_INTEGRATOR_RUNTIME
+uint36 NS_INTEGRATOR_CONFIG_UPDATE 				= 64536 					# NS_INTEGRATOR_CONFIG_UPDATE
+uint36 NS_INTEGRATOR_UNRELIABLE 				= 131072 					# NS_INTEGRATOR_UNRELIABLE
+uint36 NS_FORCED 								= 262144 					# NS_FORCED
+uint36 BMSE_BQ_COMM_FAILURE 					= 524288 					# BMSE_BQ_COMM_FAILURE
+uint36 BMSE_OTHER 								= 1048576 					# BMSE_OTHER
+uint36 BMSE_NONSTANDARD_MODE 					= 2097152 					# BMSE_NONSTANDARD_MODE
+uint36 BMSE_CONFIG_UNACCEPTABLE 				= 4194304 					# BMSE_CONFIG_UNACCEPTABLE
+uint36 OBS_VOLTAGE_DIFFERENCE 					= 8388608 					# OBS_VOLTAGE_DIFFERENCE
+uint36 OBS_SOC_DIFFERENCE 						= 16777216 					# OBS_SOC_DIFFERENCE
+uint36 OBS_SOCDEV_DIFFERENCE 					= 33554432 					# OBS_SOCDEV_DIFFERENCE
+uint36 OBS_OVERHEAT 							= 67108864 					# OBS_OVERHEAT
+uint36 OBS_HW_LOCKOUT 							= 134217728 				# OBS_HW_LOCKOUT
+uint36 OBS_LVP 									= 268435456 				# OBS_LVP
+uint36 CHG_TOO_HOT 								= 536870912 				# CHG_TOO_HOT
+uint36 CHG_TOO_COLD								= 1073741824 				# CHG_TOO_COLD
+uint36 TH_WARNING								= 2147483648				# TH_WARNING
+uint36 TH_FATAL									= 4294967296				# TH_FATAL
+uint36 TC_WARNING								= 8589934592 				# TC_WARNING
+uint36 TC_FATAL									= 17179869184				# TC_FATAL
+uint36 FORCED_OUTPUT_DISABLE                    = 34359738368               # FORCED_OUTPUT_DISABLE
+uint36 active_faults
+
+uint16 balanced_cells
+float32 lifetime_charge_ah
+uint32 bq_config_crc

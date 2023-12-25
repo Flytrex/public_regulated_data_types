@@ -1,0 +1,13 @@
+#
+# Acknowledgment message during RTK message handling. The type field states if this message is a positive ack or if an error happened (for a specific fragment or the whole RTK message)
+#
+
+uint32 sequence_id  # ID of the inner RTK message
+uint8 fragment_id   # ID of an RTK message fragment
+
+uint4 RTK_ACCEPTED          = 0
+uint4 RTK_FRAGMENT_ACCEPTED = 1
+uint4 RTK_ERROR             = 2
+uint4 RTK_FRAGMENT_ERROR    = 3
+uint4 RTK_RECEIVING         = 4
+uint4 type          # RTK transmission result
