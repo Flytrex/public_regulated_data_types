@@ -1,0 +1,16 @@
+#
+# CAN mode configuration message
+#
+# Bit layout:
+# - can_mode: 2 bits (0 = regular CAN, 1 = CAN FD, 2-3 reserved)
+# - void6: 6 bits (unused, always zero for byte alignment)
+# - data_bitrate: 32 bits (data bitrate in bits per second)
+# - crc32: 32 bits (CRC32 of the payload excluding this field)
+#
+
+uint8 CAN_MODE_REGULAR = 0  # Regular CAN mode
+uint8 CAN_MODE_FD = 1       # CAN FD mode
+
+uint8 can_mode       # CAN mode: 0 = regular CAN, 1 = CAN FD
+uint32 data_bitrate  # Data bitrate in bits per second
+uint32 crc32         # CRC32 of the payload (can_mode + void6 + data_bitrate)
