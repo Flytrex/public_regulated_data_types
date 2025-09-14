@@ -1,0 +1,9 @@
+# FPC Diagnostic Open Loop Data
+
+float16 ia_rms
+float16 ib_rms
+float16 input_voltage
+float16 temperature
+uint8 remaining_time
+bool[16] error_flags
+uint16 last_second_raw_commands
