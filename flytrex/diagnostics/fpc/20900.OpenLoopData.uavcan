@@ -4,5 +4,5 @@ float16 ia_rms_A                  # RMS A phase current
 float16 ib_rms_A                  # RMS B phase current
 float16 input_voltage_V           # Input voltage as measured
 float16 temperature_degC          # Unit temperature as measured
-bool[16] error_flags              # Same as in Flytrex's version of 
+bool[16] error_flags              # Same meaning as in Flytrex's version of esc.Status
 uint16 last_second_raw_commands   # How many esc.RawCommands were received in the last second?
