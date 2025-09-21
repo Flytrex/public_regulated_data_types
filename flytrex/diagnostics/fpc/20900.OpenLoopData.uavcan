@@ -1,9 +1,8 @@
-# FPC Diagnostic Open Loop Data
+# Propulsion Controller: Diagnostic Open Loop Data for automated end-of-line testing
 
-float16 ia_rms
-float16 ib_rms
-float16 input_voltage
-float16 temperature
-uint8 remaining_time
-bool[16] error_flags
-uint16 last_second_raw_commands
+float16 ia_rms_A                  # RMS A phase current
+float16 ib_rms_A                  # RMS B phase current
+float16 input_voltage_V           # Input voltage as measured
+float16 temperature_degC          # Unit temperature as measured
+bool[16] error_flags              # Same as in Flytrex's version of 
+uint16 last_second_raw_commands   # How many esc.RawCommands were received in the last second?
