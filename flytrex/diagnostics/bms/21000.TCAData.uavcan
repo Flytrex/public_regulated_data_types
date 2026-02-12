@@ -1,0 +1,11 @@
+# Propulsion Controller: Diagnostic Open Loop Data for automated end-of-line testing
+
+int32 dut_vbat_raw                # Device under test VBAT
+int32 dut_vchg_raw                # Device under test VCHG
+uint32 dut_cut_raw                # Device under test CUT
+uint32 n_ble_cmds_transmitted     # Amount of sent BLE commands
+int16 bq_voltage_scale            # BQ voltage scale
+int16 bq_current_scale            # BQ current scale
+bool button_depressed             # Is the button pressed down?
+bool can_wake_detected            # Is CAN_WAKE detected?
+bool cc_eeprom_nominal            # Is EEPROM operational?
