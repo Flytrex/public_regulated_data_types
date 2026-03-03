@@ -60,7 +60,7 @@ bool SPOOL_HOLDING                         = 1
 bool SPOOL_SHAFT_CONTROL                   = 0
 bool SPOOL_LOAD_CONTROL                    = 1
 
-bool HOMING_INCOMPLETE                     = 0          # Wire homing in incomplete
+bool HOMING_INCOMPLETE                     = 0          # Wire homing is incomplete
 bool HOMING_COMPLETE                       = 1          # Wire homing complete
 
 bool ALIGNMENT_INCOMPLETE                  = 0          # Encoder alignment is incomplete
@@ -73,7 +73,7 @@ bool mode_status                                        # The current mode's sta
 uint32 error_flags                                      # A bitmap of all the possible errors
 uint16 motor_rpm                                        # Motor revolutions per minute
 bool has_package                                        # A flag that indicates if a package is sensed on the wire
-float16 instant_weight                                  # The wait of the package in kg. Relevant when has_package = 1
+float16 instant_weight                                  # The weight of the package in kg. Relevant when has_package = 1
 bool net_state                                          # A flag that indicates the net status
 bool lock_state                                         # The state of the lock servo
 uint32 mode_duration                                    # Time in milliseconds in the current mode
@@ -87,7 +87,7 @@ float16 spool_input_min_speed_window                    # The maximum duration t
 bool spool_input_ack_observer_fault
 float16 spool_input_load_acc                            # The rate of change of the angular velocity of the rotating spool drum (measured in rad/s^2)
 float16 spool_input_load_dec                            # The rate at which the angular velocity of the spool drum decreases (measured in rad/s^2)
-float16 spool_input_req_shaft_ctrl_load
+bool spool_input_req_shaft_ctrl_load
 bool spool_input_req_exec_hold                          # A flag for executing/stopping the current action
 uint8 spool_input_target_ext                            # The desired total length of cable to be deployed or unwound
 bool spool_input_home_switch_activated                  # The endswitch which is triggered when the bobbin is in the house
