@@ -2,6 +2,8 @@
 
 uint4 OPERATION_RECALL                     = 0               # Read the constants configuration from the spool controller
 uint4 OPERATION_STORE                      = 1               # Store the constants configuration to the spool controller
+uint4 OPERATION_UNUSED                     = 2               # Currently unused value
+uint4 OPERATION_RESPONSE                   = 3               # A response that is sent from the node
 
 uint4 operation                                              # The operation to perform
 float16 wire_diameter                                        # Diameter of the wire in meters

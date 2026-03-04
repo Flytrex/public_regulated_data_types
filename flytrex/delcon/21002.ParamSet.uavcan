@@ -2,7 +2,8 @@
 
 uint4 OPERATION_RECALL                     = 0               # Read a ParamSet configuration from the spool controller
 uint4 OPERATION_STORE                      = 1               # Store a ParamSet configuration to the spool controller
-uint4 OPERATION_EXECUTE                    = 3               # Bypass the external flash and execute ParamSet values in the spool controller (the parameters aren't saved)
+uint4 OPERATION_EXECUTE                    = 2               # Bypass the external flash and execute ParamSet values in the spool controller (the parameters aren't saved)
+uint4 OPERATION_RESPONSE                   = 3               # A response that is sent from the node
 
 bool SPOOL_SHAFT_CONTROL                   = 0
 bool SPOOL_LOAD_CONTROL                    = 1
