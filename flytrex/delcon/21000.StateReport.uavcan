@@ -73,48 +73,48 @@ bool mode_status                                        # The current mode's sta
 uint32 error_flags                                      # A bitmap of all the possible errors
 uint16 motor_rpm                                        # Motor revolutions per minute
 bool has_package                                        # A flag that indicates if a package is sensed on the wire
-float16 instant_weight                                  # The weight of the package in kg. Relevant when has_package = 1
+float32 instant_weight                                  # The weight of the package in kg. Relevant when has_package = 1
 bool net_state                                          # A flag that indicates the net status
 bool lock_state                                         # The state of the lock servo
 uint32 mode_duration                                    # Time in milliseconds in the current mode
-float16 motor_temperature                               # The current temperature of the motor
-float16 spool_input_max_lag                             # The distance (in meters) that the actual wire position is permitted to fall behind the target position before the controller triggers an error
-float16 spool_input_max_lag_window                      # The maximum time (e.g., 0.5 seconds) the controller will wait for the spool to reach a commanded position
-float16 spool_input_max_overshoot                       # The difference between the peak physical position reached by the spool and the final steady-state setpoint
-float16 spool_input_max_overshoot_window                # The time window which allows spool/unspool overshoot
-float16 spool_input_min_speed                           # The lowest linear velocity at which the wire is permitted to travel while the system is in an active "run" state
-float16 spool_input_min_speed_window                    # The maximum duration the system allows for the motor to reach or maintain its "Min Speed" threshold
+float32 motor_temperature                               # The current temperature of the motor
+float32 spool_input_max_lag                             # The distance (in meters) that the actual wire position is permitted to fall behind the target position before the controller triggers an error
+float32 spool_input_max_lag_window                      # The maximum time (e.g., 0.5 seconds) the controller will wait for the spool to reach a commanded position
+float32 spool_input_max_overshoot                       # The difference between the peak physical position reached by the spool and the final steady-state setpoint
+float32 spool_input_max_overshoot_window                # The time window which allows spool/unspool overshoot
+float32 spool_input_min_speed                           # The lowest linear velocity at which the wire is permitted to travel while the system is in an active "run" state
+float32 spool_input_min_speed_window                    # The maximum duration the system allows for the motor to reach or maintain its "Min Speed" threshold
 bool spool_input_ack_observer_fault
-float16 spool_input_load_acc                            # The rate of change of the angular velocity of the rotating spool drum (measured in rad/s^2)
-float16 spool_input_load_dec                            # The rate at which the angular velocity of the spool drum decreases (measured in rad/s^2)
+float32 spool_input_load_acc                            # The rate of change of the angular velocity of the rotating spool drum (measured in rad/s^2)
+float32 spool_input_load_dec                            # The rate at which the angular velocity of the spool drum decreases (measured in rad/s^2)
 bool spool_input_req_shaft_ctrl_load
 bool spool_input_req_exec_hold                          # A flag for executing/stopping the current action
 uint8 spool_input_target_ext                            # The desired total length of cable to be deployed or unwound
 bool spool_input_home_switch_activated                  # The endswitch which is triggered when the bobbin is in the house
-float16 spool_input_max_force                           # The maximum allowable cable tension or linear pulling force the system can exert
-float16 spool_input_min_force                           # The minimum amount of tension or pulling effort that must be maintained on the wire to ensure safe and reliable operation
-float16 spool_input_max_torque                          # The software or hardware limit on the rotational twisting force the motor can apply to the spool shaft
-float16 spool_input_min_torque                          # The lower threshold of rotational force that the motor is commanded or allowed to maintain
+float32 spool_input_max_force                           # The maximum allowable cable tension or linear pulling force the system can exert
+float32 spool_input_min_force                           # The minimum amount of tension or pulling effort that must be maintained on the wire to ensure safe and reliable operation
+float32 spool_input_max_torque                          # The software or hardware limit on the rotational twisting force the motor can apply to the spool shaft
+float32 spool_input_min_torque                          # The lower threshold of rotational force that the motor is commanded or allowed to maintain
 bool spool_input_energize                               # Energizing the motor
 bool spool_input_encoder_reliable
 bool spool_internal_energize_allowed                    # AND (spool_input_energize, spool_input_encoder_reliable)
-float16 spool_internal_ext_setpoint                     # The target value for the length of wire that comes out from the trajectory generator
-float16 spool_internal_ext_err                          # The difference between where the wire should be and where it actually is (spool_internal_ext_setpoint - spool_output_ext)
-float16 spool_internal_shaft_setpoint                   # The target angular position for the motor's output shaft
-float16 spool_internal_shaft_err                        # The difference between where the shaft should be and where it actually is (spool_internal_shaft_setpoint - spool_output_shaft_pos)
-float16 spool_internal_quad_current_req                 # The value for the specific component of motor current that is responsible for generating torque
-float16 spool_internal_quad_current_active_setpoint     # The final, safety-filtered command for torque-producing current (Iq) that is actually sent to the motor's power electronics
-float16 spool_output_trajectory_margin                  # The maximum allowable physical distance the system can deviate from its pre-planned motion path
+float32 spool_internal_ext_setpoint                     # The target value for the length of wire that comes out from the trajectory generator
+float32 spool_internal_ext_err                          # The difference between where the wire should be and where it actually is (spool_internal_ext_setpoint - spool_output_ext)
+float32 spool_internal_shaft_setpoint                   # The target angular position for the motor's output shaft
+float32 spool_internal_shaft_err                        # The difference between where the shaft should be and where it actually is (spool_internal_shaft_setpoint - spool_output_shaft_pos)
+float32 spool_internal_quad_current_req                 # The value for the specific component of motor current that is responsible for generating torque
+float32 spool_internal_quad_current_active_setpoint     # The final, safety-filtered command for torque-producing current (Iq) that is actually sent to the motor's power electronics
+float32 spool_output_trajectory_margin                  # The maximum allowable physical distance the system can deviate from its pre-planned motion path
 bool spool_output_target_reached                        # A flag which indicates if the wire reached target
 bool spool_output_go_emergency_hold                     # A flag which controls if the spooling enters emergency hold or continue with operation
 bool spool_output_executing_holding                     # OR (spool_output_go_emergency_hold, spool_input_req_exec_hold)
 bool spool_output_shaft_load_ctrl                       # AND(spool_input_req_shaft_ctrl_load, spool_output_homing_complete)
-float16 spool_output_ext                                # The output wire extension in meters
-float16 spool_output_shaft_pos                          # The output shaft position in radian
+float32 spool_output_ext                                # The output wire extension in meters
+float32 spool_output_shaft_pos                          # The output shaft position in radian
 bool spool_output_homing_complete                       # "WIRE_HOMING" mode is complete
-float16 spool_output_force                              # The real-time linear pulling effort currently being exerted by the cable (in N)
-float16 spool_output_torque                             # The rotational twisting force currently being generated at the motor's output shaft (in Nm)
-float16 spool_output_bobbin_speed                       # Bobbin speed, rad/s
-float16 spool_output_load_speed                         # Load speed, m/s
-float16 spool_output_total_energy_cntr                  # Total energy counter, J
+float32 spool_output_force                              # The real-time linear pulling effort currently being exerted by the cable (in N)
+float32 spool_output_torque                             # The rotational twisting force currently being generated at the motor's output shaft (in Nm)
+float32 spool_output_bobbin_speed                       # Bobbin speed, rad/s
+float32 spool_output_load_speed                         # Load speed, m/s
+float32 spool_output_total_energy_cntr                  # Total energy counter, J
 bool spool_output_alignment_complete                    # Alignment complete flag
