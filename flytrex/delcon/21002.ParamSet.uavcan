@@ -1,0 +1,22 @@
+# DelCon (delivery controller) parameters set command
+
+uint4 OPERATION_RECALL                     = 0               # Read a ParamSet configuration from the spool controller
+uint4 OPERATION_STORE                      = 1               # Store a ParamSet configuration to the spool controller
+uint4 OPERATION_EXECUTE                    = 2               # Bypass the external flash and execute ParamSet values in the spool controller (the parameters aren't saved)
+uint4 OPERATION_RESPONSE                   = 3               # A response that is sent from the node
+
+bool SPOOL_SHAFT_CONTROL                   = 0
+bool SPOOL_LOAD_CONTROL                    = 1
+
+uint4 operation                                              # The operation to perform
+uint16 param_id                                              # The ParamSet ID number
+bool load_not_shaft_control                                  # false: shaft control (SPOOL_SHAFT_CONTROL); true: load control (SPOOL_LOAD_CONTROL)
+float32 shaft_pos_rad                                        # The shaft position in radian
+float32 completion_time_s                                    # The time to complete the setup
+float32 min_torque_Nm                                        # The lower threshold of rotational force that the motor is commanded or allowed to maintain
+float32 max_torque_Nm                                        # The software or hardware limit on the rotational twisting force the motor can apply to the spool shaft
+float32 obs_tension_detector_min_torque_Nm                   # The lower threshold of rotational force that the motor is commanded or allowed to maintain
+float32 obs_tension_detector_window_s                        # The time in seconds which obs_tension_detector_min_torque_Nm was observed
+float32 obs_traj_deviation_pos_m                             # Maximum allowed positive deviation from the planned trajectory [m]
+float32 obs_traj_deviation_neg_m                             # Maximum allowed negative deviation from the planned trajectory [m]
+float32 obs_allowed_deviation_pos_window_s                   # Time window over which positive trajectory deviation is evaluated [s]

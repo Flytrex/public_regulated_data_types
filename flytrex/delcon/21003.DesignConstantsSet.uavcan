@@ -1,0 +1,14 @@
+# DelCon (delivery controller) constants set
+
+uint4 OPERATION_RECALL                     = 0               # Read the constants configuration from the spool controller
+uint4 OPERATION_STORE                      = 1               # Store the constants configuration to the spool controller
+uint4 OPERATION_UNUSED                     = 2               # Currently unused value
+uint4 OPERATION_RESPONSE                   = 3               # A response that is sent from the node
+
+uint4 operation                                              # The operation to perform
+float32 wire_diameter                                        # Diameter of the wire in meters
+float32 barrel_diameter                                      # The diameter of the barrel in meters
+float32 spool_width                                          # The width of the spool
+float32 gearbox_ratio                                        # Gearbox ratio
+float32 wire_packing_efficiencies                            # Packing efficiency factor of the wound wire
+float32 total_length_of_spooled_wire                         # The wire's total length in meters
