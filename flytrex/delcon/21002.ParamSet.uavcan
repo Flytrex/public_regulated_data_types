@@ -9,6 +9,7 @@ bool SPOOL_SHAFT_CONTROL                   = 0
 bool SPOOL_LOAD_CONTROL                    = 1
 
 uint4 operation                                              # The operation to perform
+Error error                                                  # A returned error by the responder
 uint16 param_id                                              # The ParamSet ID number
 bool load_not_shaft_control                                  # false: shaft control (SPOOL_SHAFT_CONTROL); true: load control (SPOOL_LOAD_CONTROL)
 float32 shaft_pos_rad                                        # The shaft position in radian

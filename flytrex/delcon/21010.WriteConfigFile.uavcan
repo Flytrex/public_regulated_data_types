@@ -1,10 +1,5 @@
 # DelCon (delivery controller) write configuration file (a broadcast message that is used for send/response)
 
-uint16 STATUS_OK               = 0                           # The file write can continue
-uint16 STATUS_BUSY             = 1                           # The DelCon is busy, so file write needs to be postpone
-uint16 STATUS_LOW_MEM          = 2                           # DelCon experiences low memory, so file write needs to be postpone
-uint16 STATUS_UNKNOWN_ERR      = 0xFFFF                      # DelCon experiences unknown error, so file write needs to be postpone
-
 uint8 destination_node_id                                    # The destination's node ID
-uint16 status                                                # The status of the request. This field is set be the responder
+Error error                                                  # A returned error by the responder
 Path image_file_remote_path                                  # The file to upload to the DelCon
