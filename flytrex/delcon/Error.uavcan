@@ -18,5 +18,6 @@ int16 STATUS_IDX_OUT_OF_BOUND  = 40 # Param ID is out of bound
 
 int16 STATUS_BUSY              = 50                          # The DelCon is busy, so file write needs to be postpone
 int16 STATUS_LOW_MEM           = 51                          # DelCon experiences low memory, so file write needs to be postpone
+int16 STATUS_TIMEOUT           = 52                          # Timeout from previous file read request detected
 
 int16 value
