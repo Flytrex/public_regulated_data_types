@@ -9,8 +9,8 @@ int32 dut_vbat_raw                # Raw ADC battery voltage measurement
 int32 dut_vchg_raw                # Raw ADC charge voltage measurement
 int32 dut_cur_raw                 # Raw ADC current measurement
 uint32 n_ble_cmds_transmitted     # Number of BLE commands transmitted during the test interval
-float32 bq_voltage_scale          # Voltage scale factor from BQ device (e.g., volts per LSB × 1e6 or similar), applied to *_v*_raw fields
-float32 bq_current_scale          # Current scale factor from BQ device (e.g., amps per LSB × 1e6 or similar), applied to corresponding current raw fields if present
-bool button_depressed             # True if the TCA button is currently pressed
-bool can_wake_detected            # True if CAN_WAKE activity has been detected
+float16 bq_voltage_scale          # Voltage scale factor from BQ device (e.g., volts per LSB × 1e6 or similar)
+float16 bq_current_scale          # Current scale factor from BQ device (e.g., amps per LSB × 1e6 or similar), applied to corresponding current raw fields if present
+bool button_depressed             # True if the BMS button is currently pressed
+bool can_wake_detected            # True if CAN_WAKE (PIN_EXT_POWER) has been detected
 bool cc_eeprom_nominal            # True if the charge controller EEPROM reports nominal/operational status
