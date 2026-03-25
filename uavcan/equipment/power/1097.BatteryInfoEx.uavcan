@@ -3,63 +3,72 @@
 # https://docs.google.com/spreadsheets/d/1uEEfnQlMEymqpjMPGG-jhk5R2maAyZMZhrMTCv0htKY/edit#gid=1073892483
 #
 
-float32 charge_intergrator_ah
-float16 cfet_temp_dc
-float16 dfet_temp_dc
-float16 pcb_temp_bq_dc
-float16 rear_cell_temp_dc
-float16 cell_board_temp_dc
-float16 front_cell_temp_dc
-float16 load_voltage_v
-float16 charger_voltage_v
-float16 pack_voltage_v
-float16 current_a
-float16[12] cell_voltage_v
-float16 max_cell_v
-float16 min_cell_v
-float16 stack_delta_v
-uint7 relative_soc_pct
-float16 non_clamped_soc
-uint8 active_bq_alert_code
+float16 cfet_temp_dc                                                        # [°C] Charge FET Group Temperature
+float16 dfet_temp_dc                                                        # [°C] Discharge FET Group Temperature
+float16 pcb_temp_bq_dc                                                      # [°C] BQ76952 internal sensor Temp
+float16[3] pack_temp_sensor_dc                                              # [°C] Pack Sensors Temp
+float16 charger_voltage_v                                                   # [V] Voltage at the CHARGE connection
+float16 pack_voltage_v                                                      # [V] Voltage of the cell stack (CELL14..16)
+uint8 num_cells                                                             # [integer] Cell count
+float16 nominal_voltage_v                                                   # [V] Battery nominal voltage (cell nominal voltage x number of cells)
+float16[14] cell_voltage_v                                                  # [V] Per-cell voltages
+float16 max_cell_v                                                          # [V] Max cell voltage
+float16 min_cell_v                                                          # [V] Min cell voltage
+float16 stack_delta_v                                                       # [V] sum(cell_voltage_v) - pack_voltage_v
+float16 soc                                                                 # [0..1] Precise state-of-charge
 
-uint36 CUV                                      = 1                         # Cell undervoltage
-uint36 OVC                                      = 2                         # Overcurrent
-uint36 COV                                      = 4                         # Cell overvoltage
-uint36 OTHER_HW_FAULT                           = 8                         # Hardware fault
-uint36 TOSF                                     = 16                        # Measurement self-control fault
-uint36 FATAL_CUV                                = 32                        # Fatal cell undervoltage
-uint36 BAD_TEMP_SENSOR                          = 64                        # Invalid temperature sensor
-uint36 FATAL_COV                                = 128                       # Fatal cell overvoltage
-uint36 DCF                                      = 256                       # Discharge circuit hardware failure
-uint36 CCF                                      = 512                       # Charge circuit hardware failure
-uint36 INTEGRATOR_UNRELIABLE                    = 1024                      # Unreliable SoC integrator
-uint36 OUT_OF_BALANCE                           = 2048                      # Large voltage differences between cells
-uint36 BQ_COMMS_FAILURE                         = 4096                      # BQ76952 not accessible
-uint36 CONFIG_UNACCEPTABLE                      = 8192                      # BQ76952 misconfigured
-uint36 OTHER_SW_FAULT                           = 16384                     # Undefined software fault
-uint36 NONSTANDARD_MODE                         = 32768                     # BMS in factory mode(s) 
-uint36 CHG_ERROR                                = 64536                     # Charger error
-uint36 LO_VOLTAGE_DIFFERENCE                    = 131072                    # Large voltage difference between batteries
-uint36 LO_UNSAFE_TEMP                           = 262144                    # Temp too high to enable output
-uint36 LO_HW_FAULT                              = 524288                    # Other hardware fault prevents enabling the output
-uint36 LO_OTHER_UNSAFE                          = 1048576                   # Other battery is in unsafe condition
-uint36 LO_CHARGING_SEPARATION                   = 2097152                   # THe battery is charging
-uint36 LO_OTHER_NOT_IN_USE                      = 4194304                   # Other battery recently disabled
-uint36 LO_LOAD_VOLTAGE                          = 8388608                   # Load voltage present on bus
-uint36 CHG_TOO_HOT                              = 16777216                  # Too hot for charging
-uint36 CHG_TOO_COLD                             = 33554432                  # Too cold for charging 
-uint36 CHG_PRESENT                              = 67108864                  # Charger is present
-uint36 CHG_REQUESTED                            = 134217728                 # Charging is requested
-uint36 CHG_TO_TERM                              = 268435456                 # Charging to termination is requested
-uint36 CHG_FULL                                 = 536870912                 # Battery is fully charged
-uint36 CHG_CHARGING                             = 1073741824                # Battery is charging
-uint36 TH_WARNING                               = 2147483648                # High temp
-uint36 TH_FATAL                                 = 4294967296                # Extreme high temp
-uint36 TC_WARNING                               = 8589934592                # Low temp
-uint36 TC_FATAL                                 = 17179869184               # Extreme low temp
-uint36 OUTPUT_ENABLED                           = 34359738368               # Battery output enabled
-uint36 extended_status                                                      # Bitfield
+float16 room_temp_target_energy_wh                                          # [W x h] The energy that the battery would've had, if its temperature were 20 °C, and it were charged to CHARGE_TARGET_SOC.
+float16 room_temp_present_energy_wh                                         # [W x h] The energy that the battery would've had in the present state if its temperature were 20 °C.
+float16 energy_derating_aging_wh                                            # [W x h] The energy that is inaccessible due to aging (non-reversible)
+float16 energy_derating_temperature_wh                                      # [W x h] The energy that is inaccessible due to (cold) temperature
+float16 energy_self_drain_wh                                                # [W x h] The energy that was drained from the battery by self-discharge
+uint8 target_soc_pct                                                        # [%] Set to CHARGE_TARGET_SOC
+uint8 temp_corrected_target_soc_pct                                         # [%] Maximum state-of-charge "achieveable" under present conditions
+uint8 cc_cv_point_pct                                                       # [%] Estimated CC/CV point
+uint20 charger_id                                                           # [integer] Active Charger ID
 
-uint16 balanced_cells
-float32 lifetime_charge_ah
-uint32 bq_config_crc
+uint64 CUV                                      = 1                         # Cell undervoltage
+uint64 OVC                                      = 2                         # Overcurrent
+uint64 COV                                      = 4                         # Cell overvoltage
+uint64 OTHER_HW_FAULT                           = 8                         # Other hardware fault
+uint64 TOSF                                     = 16                        # Sum of cell voltages not equal to the stack voltage
+uint64 FATAL_CUV                                = 32                        # Fatal cell undervoltage
+uint64 BAD_TEMP_SENSOR                          = 64                        # Invalid temperature sensor
+uint64 FATAL_COV                                = 128                       # Fatal cell overvoltage
+uint64 DCF                                      = 256                       # Discharge circuit hardware failure
+uint64 CCF                                      = 512                       # Charge circuit hardware failure
+uint64 DYNAMICS_NOT_CONVERGED                   = 1024                      # Battery model dynamics are not converged
+uint64 OUT_OF_BALANCE                           = 2048                      # Large voltage differences between cells
+uint64 BQ_COMMS_FAILURE                         = 4096                      # BQ76952 not accessible
+uint64 CONFIG_UNACCEPTABLE                      = 8192                      # BQ76952 misconfigured
+uint64 OTHER_SW_FAULT                           = 16384                     # Undefined software fault
+uint64 NONSTANDARD_MODE                         = 32768                     # BMS in non-operational fault
+uint64 CHG_ERROR                                = 64536                     # Charger error
+uint64 LO_VOLTAGE_DIFFERENCE                    = 131072                    # Lockout: Large voltage difference between batteries
+uint64 LO_UNSAFE_TEMP                           = 262144                    # Lockout: Temp too high to enable output
+uint64 LO_HW_FAULT                              = 524288                    # Lockout: Output inhibitited
+uint64 LO_OTHER_UNSAFE                          = 1048576                   # Lockout: Other battery is in unsafe condition
+uint64 LO_CHARGING_SEPARATION                   = 2097152                   # Lockout: The other battery is charging
+uint64 LO_OTHER_RECENTLY_DISABLED               = 4194304                   # Lockout: The other battery was recently disabled
+uint64 OUTPUT_RECENTLY_DISABLED                 = 8388608                   # The output was recently disabled
+uint64 CHG_TOO_HOT                              = 16777216                  # Too hot for charging
+uint64 CHG_TOO_COLD                             = 33554432                  # Too cold for charging
+uint64 CHG_PRESENT                              = 67108864                  # A charger is present
+uint64 CHG_REQUESTED                            = 134217728                 # Charging is requested
+uint64 VOLTAGES_VALID                           = 268435456                 # Voltages reported by the BMS are valid
+uint64 CHG_ALT_CONTROL                          = 536870912                 # Alternative Charging Control is active
+uint64 CHG_CHARGING                             = 1073741824                # Battery is charging
+uint64 TH_WARNING                               = 2147483648                # High temp
+uint64 TH_FATAL                                 = 4294967296                # Extreme high temp
+uint64 TC_WARNING                               = 8589934592                # Low temp
+uint64 TC_FATAL                                 = 17179869184               # Extreme low temp
+uint64 OUTPUT_ENABLED                           = 34359738368               # Battery output enabled
+uint64 RESET_CC_NOT_ALLOWED                     = 68719476736               # Charge integrator not allowed
+uint64 RELAXATION_CONDITIONS                    = 137438953472              # Battery is in relaxation conditions
+uint64 CHG_GRACEFUL_STOP                        = 274877906944              # Graceful Charging Stop is active
+uint64 BUTTON_PRESSED                           = 549755813888              # The button is currently depressed
+uint64 ARMED                                    = 1099511627776             # The battery is considered armed
+uint64 extended_status                                                      # Bitfield
+
+uint16 balanced_cells                                                       # [Bitfield] Each bit represents a cell that's being discharged to balance the pack
+float32 lifetime_charge_ah                                                  # [A x h] Battery Mileage, total charge that passed through the battery
