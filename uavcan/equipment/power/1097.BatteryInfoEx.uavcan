@@ -68,6 +68,7 @@ uint64 RELAXATION_CONDITIONS                    = 137438953472              # Ba
 uint64 CHG_GRACEFUL_STOP                        = 274877906944              # Graceful Charging Stop is active
 uint64 BUTTON_PRESSED                           = 549755813888              # The button is currently depressed
 uint64 ARMED                                    = 1099511627776             # The battery is considered armed
+uint64 CC_EEPROM_FAILED                         = 2199023255552             # The EEPROM of the Cell Carrier is not working
 uint64 extended_status                                                      # Bitfield
 
 uint16 balanced_cells                                                       # [Bitfield] Each bit represents a cell that's being discharged to balance the pack
