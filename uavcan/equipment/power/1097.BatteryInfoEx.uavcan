@@ -5,8 +5,8 @@
 
 float16 cfet_temp_dc                                                        # [°C] Charge FET Group Temperature
 float16 dfet_temp_dc                                                        # [°C] Discharge FET Group Temperature
-float16 pcb_temp_bq_dc                                                      # [°C] BQ76952 internal sensor Temp
-float16[3] pack_temp_sensor_dc                                              # [°C] Pack Sensors Temp
+float16 pcb_temp_bq_dc                                                      # [°C] BQ76952 internal sensor temperature
+float16[3] pack_temp_sensor_dc                                              # [°C] Pack Sensors temperature
 float16 charger_voltage_v                                                   # [V] Voltage at the CHARGE connection
 float16 pack_voltage_v                                                      # [V] Voltage of the cell stack (CELL14..16)
 uint8 num_cells                                                             # [integer] Cell count
@@ -18,11 +18,11 @@ float16 stack_delta_v                                                       # [V
 float16 soc                                                                 # [0..1] Precise state-of-charge
 
 float16 room_temp_target_energy_wh                                          # [W x h] The energy that the battery would've had, if its temperature were 20 °C, and it were charged to CHARGE_TARGET_SOC.
-float16 room_temp_present_energy_wh                                         # [W x h] The energy that the battery would've had in the present state if its temperature were 20 °C.
+float16 room_temp_present_energy_wh                                         # [W x h] The energy that the battery would've had in the present state, if its temperature were 20 °C.
 float16 energy_derating_aging_wh                                            # [W x h] The energy that is inaccessible due to aging (non-reversible)
 float16 energy_derating_temperature_wh                                      # [W x h] The energy that is inaccessible due to (cold) temperature
 float16 energy_self_drain_wh                                                # [W x h] The energy that was drained from the battery by self-discharge
-uint8 target_soc_pct                                                        # [%] Set to CHARGE_TARGET_SOC
+uint8 target_soc_pct                                                        # [%] Set to the CHARGE_TARGET_SOC DroneCAN parameter
 uint8 temp_corrected_target_soc_pct                                         # [%] Maximum state-of-charge "achieveable" under present conditions
 uint8 cc_cv_point_pct                                                       # [%] Estimated CC/CV point
 uint20 charger_id                                                           # [integer] Active Charger ID
@@ -42,13 +42,13 @@ uint64 OUT_OF_BALANCE                           = 2048                      # La
 uint64 BQ_COMMS_FAILURE                         = 4096                      # BQ76952 not accessible
 uint64 CONFIG_UNACCEPTABLE                      = 8192                      # BQ76952 misconfigured
 uint64 OTHER_SW_FAULT                           = 16384                     # Undefined software fault
-uint64 NONSTANDARD_MODE                         = 32768                     # BMS in non-operational fault
+uint64 NONSTANDARD_MODE                         = 32768                     # BMS in non-operational mode
 uint64 CHG_ERROR                                = 64536                     # Charger error
 uint64 LO_VOLTAGE_DIFFERENCE                    = 131072                    # Lockout: Large voltage difference between batteries
 uint64 LO_UNSAFE_TEMP                           = 262144                    # Lockout: Temp too high to enable output
 uint64 LO_HW_FAULT                              = 524288                    # Lockout: Output inhibitited
 uint64 LO_OTHER_UNSAFE                          = 1048576                   # Lockout: Other battery is in unsafe condition
-uint64 LO_CHARGING_SEPARATION                   = 2097152                   # Lockout: The other battery is charging
+uint64 LO__SEPARATION                           = 2097152                   # Lockout: The other battery is charging
 uint64 LO_OTHER_RECENTLY_DISABLED               = 4194304                   # Lockout: The other battery was recently disabled
 uint64 OUTPUT_RECENTLY_DISABLED                 = 8388608                   # The output was recently disabled
 uint64 CHG_TOO_HOT                              = 16777216                  # Too hot for charging
