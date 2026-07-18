@@ -1,4 +1,4 @@
-# DelCon (delivery controller) parameters set command
+# Delivery Controller: Spool Controller parameter set
 
 uint4 OPERATION_RECALL                     = 0               # Read a ParamSet configuration from the spool controller
 uint4 OPERATION_STORE                      = 1               # Store a ParamSet configuration to the spool controller
@@ -11,13 +11,32 @@ bool SPOOL_LOAD_CONTROL                    = 1
 uint4 operation                                              # The operation to perform
 Error error                                                  # A returned error by the responder
 uint16 param_id                                              # The ParamSet ID number
+
+bool energize                                                # Energize the motor
 bool load_not_shaft_control                                  # false: shaft control (SPOOL_SHAFT_CONTROL); true: load control (SPOOL_LOAD_CONTROL)
-float32 shaft_pos_rad                                        # The shaft position in radian
-float32 completion_time_s                                    # The time to complete the setup
-float32 min_torque_Nm                                        # The lower threshold of rotational force that the motor is commanded or allowed to maintain
-float32 max_torque_Nm                                        # The software or hardware limit on the rotational twisting force the motor can apply to the spool shaft
-float32 obs_tension_detector_min_torque_Nm                   # The lower threshold of rotational force that the motor is commanded or allowed to maintain
-float32 obs_tension_detector_window_s                        # The time in seconds which obs_tension_detector_min_torque_Nm was observed
-float32 obs_traj_deviation_pos_m                             # Maximum allowed positive deviation from the planned trajectory [m]
-float32 obs_traj_deviation_neg_m                             # Maximum allowed negative deviation from the planned trajectory [m]
-float32 obs_allowed_deviation_pos_window_s                   # Time window over which positive trajectory deviation is evaluated [s]
+bool execute_not_hold                                        # false: hold the current action; true: execute the current action
+
+float32 min_torque_limit                                     # Lower torque (Nm) or force (N) limit, depending on load_not_shaft_control
+float32 max_torque_limit                                     # Upper torque (Nm) or force (N) limit, depending on load_not_shaft_control
+
+bool ob_ack_event                                             # Acknowledge the observer's latched fault event
+bool ob_hold_on_event                                         # Hold the current action when the observer detects a fault
+float32 ob_neg_departure_error                                # "Negative Departure" detector threshold, in rad or m depending on load_not_shaft_control
+float32 ob_neg_departure_window_s                             # "Negative Departure" detector time window, in seconds
+float32 ob_pos_departure_error                                # "Positive Departure" detector threshold, in rad or m depending on load_not_shaft_control
+float32 ob_pos_departure_window_s                             # "Positive Departure" detector time window, in seconds
+float32 ob_stall_min_speed                                    # "Stall" detector minimum speed threshold, in rad/s or m/s depending on load_not_shaft_control
+float32 ob_stall_window_s                                     # "Stall" detector time window, in seconds
+float32 ob_target_margin                                      # "Target Reached" detector margin, in rad or m depending on load_not_shaft_control
+float32 ob_on_target_window_s                                 # "Target Reached" detector time window, in seconds
+float32 ob_tension_min_torque                                 # "Tension Reached" detector lower threshold, in Nm or N depending on load_not_shaft_control
+float32 ob_tension_max_torque                                 # "Tension Reached" detector upper threshold, in Nm or N depending on load_not_shaft_control
+float32 ob_tension_window_s                                   # "Tension Reached" detector time window, in seconds
+
+float32 tg_position_setpoint                                  # Target position, in rad or m depending on load_not_shaft_control
+float32 tg_acceleration                                       # Acceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
+float32 tg_deceleration                                       # Deceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
+float32 tg_halt_deceleration                                  # Halt deceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
+float32 tg_movement_time_s                                    # The time to complete the setup
+
+bool autostop_enabled                                         # Enable the autostop feature
