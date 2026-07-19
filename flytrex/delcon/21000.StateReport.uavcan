@@ -1,120 +1,62 @@
-# DelCon (delivery controller) state report data
-uint5 ACTIVE_MODE_INITIAL                  = 0          # INITIAL mode
-uint5 ACTIVE_MODE_ENCODER_ALIGNMENT        = 1          # ENCODER_ALIGNMENT mode
-uint5 ACTIVE_MODE_WIRE_HOMING              = 2          # WIRE_HOMING mode
-uint5 ACTIVE_MODE_IDLE_EMPTY               = 3          # IDLE_EMPTY mode
-uint5 ACTIVE_MODE_DIRECT_OVERRIDE          = 4          # DIRECT_OVERRIDE mode
-uint5 ACTIVE_MODE_HALT                     = 5          # HALT mode
-uint5 ACTIVE_MODE_GROUND_UNLOAD            = 6          # GROUND_UNLOAD mode
-uint5 ACTIVE_MODE_RESET                    = 7          # RESET mode
-uint5 ACTIVE_MODE_PREPARE_FOR_PICKUP       = 8          # PREPARE_FOR_PICKUP mode
-uint5 ACTIVE_MODE_LIFT_PACKAGE             = 9          # LIFT_PACKAGE mode
-uint5 ACTIVE_MODE_IDLE_LOADED              = 10         # IDLE_LOADED mode
-uint5 ACTIVE_MODE_LANDING                  = 11         # LANDING mode
-uint5 ACTIVE_MODE_PREPARE_FOR_DELIVERY     = 12         # PREPARE_FOR_DELIVERY mode
-uint5 ACTIVE_MODE_DELIVERY                 = 13         # DELIVERY mode
-uint5 ACTIVE_MODE_RELEASE_WIRE             = 14         # RELEASE_WIRE mode
+# Delivery Controller: Hoist controller state report
 
-bool MODE_ERROR_NO_ERROR                   = 0          # No error
-bool MODE_ERROR_ASSERT                     = 1          # There is an error
+uint2 MODE_EXECUTION_STATE_IN_PROGRESS         = 0          # The current mode is still being executed
+uint2 MODE_EXECUTION_STATE_DONE                = 1          # The current mode finished executing successfully
+uint2 MODE_EXECUTION_STATE_ERROR               = 2          # The current mode finished executing with an error
 
-bool MODE_STATUS_DONE                      = 0          # Operation finished
-bool MODE_STATUS_IN_PROGRESS               = 1          # Operation is in progress
+uint2 mode_execution_state                                  # The current mode's execution state
 
-bool HAS_PACKAGE_FALSE                     = 0          # There is no package on the hook
-bool HAS_PACKAGE_TRUE                      = 1          # There is a package on the hook
+uint2 NET_STATE_UP                             = 0          # The net is up
+uint2 NET_STATE_DOWN                           = 1          # The net is down
+uint2 NET_STATE_STALL                          = 2          # The net servo stalled
+uint2 NET_STATE_OPEN_CIRCUIT                   = 3          # The net servo circuit is open
 
-bool NET_STAT_UP                           = 0          # The net is up
-bool NET_STAT_DOWN                         = 1          # The net is down
+uint2 net_state                                             # The current net status
 
-bool LOCK_STATE_UNLOCKED                   = 0          # The state of the lock is unlocked
-bool LOCK_STATE_LOCKED                     = 1          # The state of the lock is locked
+uint2 LOCK_STATE_LOCKED                        = 0          # The lock is locked
+uint2 LOCK_STATE_UNLOCKED                      = 1          # The lock is unlocked
+uint2 LOCK_STATE_STALL                         = 2          # The lock servo stalled
+uint2 LOCK_STATE_OPEN_CIRCUIT                  = 3          # The lock servo circuit is open
 
-bool ACK_OBSERVER_NO_FAULT                 = 0
-bool ACK_OBSERVER_FAULT                    = 1
+uint2 lock_state                                            # The current lock status
 
-bool REQ_EXEC_HOLD_EXEC                    = 0          # Execute the current action
-bool REQ_EXEC_HOLD_HOLD                    = 1          # Stop the current action
+uint10 ERROR_OK                                = 0          # No error
+uint10 ERROR_ENCODER_ALIGNMENT_FAILURE         = 1          # Encoder alignment failed
+uint10 ERROR_DESIGN_CONSTANT_SETUP_FAILURE     = 2          # Design constants setup failed
+uint10 ERROR_SPCC_FAILURE                      = 3          # SMCU communication failure
+uint10 ERROR_STATE_UNKNOWN                     = 4          # Hoist Controller state unknown 
 
-bool HOME_SWITCH_INACTIVE                  = 0          # Home switch inactive
-bool HOME_SWITCH_ACTIVE                    = 1          # Home switch active
+uint10 error                                                # The current error, if any
 
-bool SPOOL_DEENERGIZE                      = 0          # Deenergize the motor
-bool SPOOL_ENERGIZE                        = 1          # Energize the motor
+uint2 PACKAGE_STATE_UNKNOWN                    = 0          # The package state is not known
+uint2 PACKAGE_STATE_EMPTY                      = 1          # There is no package on the hook
+uint2 PACKAGE_STATE_LOADED                     = 2          # There is a package on the hook
 
-bool ENCODER_UNRELIABLE                    = 0
-bool ENCODER_RELIABLE                      = 1
+uint2 package_state                                         # The current package status
 
-bool SPOOL_ENERGIZE_NOT_ALLOWED            = 0
-bool SPOOL_ENERGIZE_ALLOWED                = 1
+uint7 MODE_INITIAL                             = 0          # The mode after initialization
+uint7 MODE_ALIGN_ENCODER                       = 1          # The mode where the spool controller is aligning the encoder
+uint7 MODE_HOMING                              = 2          # Pool the hook until the endswitch engages and tension appears. On success, automatically shifts to IDLE_EMPTY
+uint7 MODE_RESERVED1                           = 3          # Reserved
+uint7 MODE_DIRECT_OVERRIDE                     = 4          # A service command to control the spool and servo controller as well as other internal functionality
+uint7 MODE_HALT                                = 5          # The mode where the spool controller halts the current wire movement
+uint7 MODE_GROUND_UNLOAD                       = 6          # Unload the package while the drone is on the ground with a package
+uint7 MODE_RESET                               = 7          # Perform a full reboot, thus returning to INITIAL state
+uint7 MODE_HOOK_STAGING                        = 8          # Perform and hold the hook lowering procedure
+uint7 MODE_LIFT_PACKAGE                        = 9          # Lifts the package. On success, shifts to IDLE_LOADED, otherwise to IDLE_EMPTY
+uint7 MODE_RESERVED2                           = 10         # Reserved
+uint7 MODE_LANDING                             = 11         # An emergency operation which requires the drone to land while a package is present or not
+uint7 MODE_PREPARE_FOR_DELIVERY                = 12         # Lift up the net before delivering the package
+uint7 MODE_DELIVERY                            = 13         # Lower the package until the wire has no tension, then pull it back up to the end
+uint7 MODE_RELEASE_WIRE                        = 14         # Unspool the wire until it is released
 
-bool SPOOL_TARGET_NOT_REACHED              = 0          # Spool target wasn't reached
-bool SPOOL_TARGET_REACHED                  = 1          # Spool target reached
+uint7 mode                                                  # The current active mode
 
-bool SPOOL_GO                              = 0          # Spool the wire
-bool SPOOL_EMERGENCY_HOLD                  = 1          # Spool hold
+uint8 submode                                               # The current active submode
 
-bool SPOOL_EXECUTING                       = 0
-bool SPOOL_HOLDING                         = 1
-
-bool SPOOL_SHAFT_CONTROL                   = 0
-bool SPOOL_LOAD_CONTROL                    = 1
-
-bool HOMING_INCOMPLETE                     = 0          # Wire homing is incomplete
-bool HOMING_COMPLETE                       = 1          # Wire homing complete
-
-bool ALIGNMENT_INCOMPLETE                  = 0          # Encoder alignment is incomplete
-bool ALIGNMENT_COMPLETE                    = 1          # Encoder alignment is complete
-
-uint5 active_mode                                       # The current active mode
-uint5 active_submode                                    # The current active submode
-bool mode_error                                         # The error mode bit. If asserted then error_flags contains the current error map
-bool mode_status                                        # The current mode's status
-uint32 error_flags                                      # A bitmap of all the possible errors
-uint16 motor_rpm                                        # Motor revolutions per minute
-bool has_package                                        # A flag that indicates if a package is sensed on the wire
-float32 instant_weight                                  # The weight of the package in kg. Relevant when has_package = 1
-bool net_state                                          # A flag that indicates the net status
-bool lock_state                                         # The state of the lock servo
-uint32 mode_duration                                    # Time in milliseconds in the current mode
-float32 motor_temperature                               # The current temperature of the motor
-float32 spool_input_max_lag                             # The distance (in meters) that the actual wire position is permitted to fall behind the target position before the controller triggers an error
-float32 spool_input_max_lag_window                      # The maximum time (e.g., 0.5 seconds) the controller will wait for the spool to reach a commanded position
-float32 spool_input_max_overshoot                       # The difference between the peak physical position reached by the spool and the final steady-state setpoint
-float32 spool_input_max_overshoot_window                # The time window which allows spool/unspool overshoot
-float32 spool_input_min_speed                           # The lowest linear velocity at which the wire is permitted to travel while the system is in an active "run" state
-float32 spool_input_min_speed_window                    # The maximum duration the system allows for the motor to reach or maintain its "Min Speed" threshold
-bool spool_input_ack_observer_fault
-float32 spool_input_load_acc                            # The rate of change of the angular velocity of the rotating spool drum (measured in rad/s^2)
-float32 spool_input_load_dec                            # The rate at which the angular velocity of the spool drum decreases (measured in rad/s^2)
-bool spool_input_req_shaft_ctrl_load
-bool spool_input_req_exec_hold                          # A flag for executing/stopping the current action
-uint8 spool_input_target_ext                            # The desired total length of cable to be deployed or unwound
-bool spool_input_home_switch_activated                  # The endswitch which is triggered when the bobbin is in the house
-float32 spool_input_max_force                           # The maximum allowable cable tension or linear pulling force the system can exert
-float32 spool_input_min_force                           # The minimum amount of tension or pulling effort that must be maintained on the wire to ensure safe and reliable operation
-float32 spool_input_max_torque                          # The software or hardware limit on the rotational twisting force the motor can apply to the spool shaft
-float32 spool_input_min_torque                          # The lower threshold of rotational force that the motor is commanded or allowed to maintain
-bool spool_input_energize                               # Energizing the motor
-bool spool_input_encoder_reliable
-bool spool_internal_energize_allowed                    # AND (spool_input_energize, spool_input_encoder_reliable)
-float32 spool_internal_ext_setpoint                     # The target value for the length of wire that comes out from the trajectory generator
-float32 spool_internal_ext_err                          # The difference between where the wire should be and where it actually is (spool_internal_ext_setpoint - spool_output_ext)
-float32 spool_internal_shaft_setpoint                   # The target angular position for the motor's output shaft
-float32 spool_internal_shaft_err                        # The difference between where the shaft should be and where it actually is (spool_internal_shaft_setpoint - spool_output_shaft_pos)
-float32 spool_internal_quad_current_req                 # The value for the specific component of motor current that is responsible for generating torque
-float32 spool_internal_quad_current_active_setpoint     # The final, safety-filtered command for torque-producing current (Iq) that is actually sent to the motor's power electronics
-float32 spool_output_trajectory_margin                  # The maximum allowable physical distance the system can deviate from its pre-planned motion path
-bool spool_output_target_reached                        # A flag which indicates if the wire reached target
-bool spool_output_go_emergency_hold                     # A flag which controls if the spooling enters emergency hold or continue with operation
-bool spool_output_executing_holding                     # OR (spool_output_go_emergency_hold, spool_input_req_exec_hold)
-bool spool_output_shaft_load_ctrl                       # AND(spool_input_req_shaft_ctrl_load, spool_output_homing_complete)
-float32 spool_output_ext                                # The output wire extension in meters
-float32 spool_output_shaft_pos                          # The output shaft position in radian
-bool spool_output_homing_complete                       # "WIRE_HOMING" mode is complete
-float32 spool_output_force                              # The real-time linear pulling effort currently being exerted by the cable (in N)
-float32 spool_output_torque                             # The rotational twisting force currently being generated at the motor's output shaft (in Nm)
-float32 spool_output_bobbin_speed                       # Bobbin speed, rad/s
-float32 spool_output_load_speed                         # Load speed, m/s
-float32 spool_output_total_energy_cntr                  # Total energy counter, J
-bool spool_output_alignment_complete                    # Alignment complete flag
+float32 wire_extension_m                                    # The wire extension in meters
+float32 load_speed_m_s                                      # The load speed in meters per second
+float32 force_on_wire_N                                     # The force on the wire in Newtons
+float32 estimated_weight_kg                                 # The estimated weight of the package in kg
+float32 fet_temp_degC                                       # The FET temperature in degrees Celsius
+float32 winding_temp_degC                                   # The motor winding temperature in degrees Celsius
