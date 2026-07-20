@@ -16,3 +16,4 @@ float32 total_wire_length_m                                  # The wire's total 
 float32 dead_wire_length_m                                   # The length of wire permanently wound on the spool that can't be deployed
 float32 gearbox_ratio                                        # Gearbox ratio
 bool reverse_phase_sequence                                  # Reverse the motor's phase sequence
+float32 torque_constant_Nm_A                                 # The motor's torque constant, in Newton-meters per Ampere
