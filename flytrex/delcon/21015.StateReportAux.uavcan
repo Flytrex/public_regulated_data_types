@@ -1,5 +1,7 @@
 # Delivery Controller: Hoist controller auxiliary state report
 
+uint8 submode                                               # The current active submode
+
 bool ob_target_reached                                      # The observer's "Target Reached" detector status
 bool ob_tension_reached                                      # The observer's "Tension Reached" detector status
 bool ob_stall_detected                                       # The observer's "Stall" detector status
