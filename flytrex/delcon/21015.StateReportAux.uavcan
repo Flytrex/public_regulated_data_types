@@ -1,5 +1,8 @@
 # Delivery Controller: Hoist controller auxiliary state report
 
+float32 fet_temp_degC                                       # The FET temperature in degrees Celsius
+float32 winding_temp_degC                                   # The motor winding temperature in degrees Celsius
+
 uint8 submode                                               # The current active submode
 
 bool ob_target_reached                                      # The observer's "Target Reached" detector status
@@ -28,3 +31,5 @@ float32 Valpha_V                                              # The alpha-axis v
 float32 Vbeta_V                                               # The beta-axis voltage, in Volts
 float32 power_W                                               # The motor power, in Watts
 float32 energy_counter_J                                      # The energy counter, in Joules
+float32 net_current_A                                         # The net servo current, in Amperes
+float32 lock_current_A                                        # The lock servo current, in Amperes

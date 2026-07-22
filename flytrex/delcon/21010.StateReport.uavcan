@@ -30,19 +30,23 @@ uint2 MODE_EXECUTION_STATE_ERROR               = 2          # The current mode f
 
 uint2 mode_execution_state                                  # The current mode's execution state
 
-uint2 NET_STATE_UP                             = 0          # The net is up
-uint2 NET_STATE_DOWN                           = 1          # The net is down
-uint2 NET_STATE_STALL                          = 2          # The net servo stalled
-uint2 NET_STATE_OPEN_CIRCUIT                   = 3          # The net servo circuit is open
+uint3 NET_STATE_UP                             = 0          # The net is up
+uint3 NET_STATE_DOWN                           = 1          # The net is down
+uint3 NET_STATE_STALL                          = 2          # The net servo stalled
+uint3 NET_STATE_OPEN_CIRCUIT                   = 3          # The net servo circuit is open
+uint3 NET_STATE_UNKNOWN                        = 4          # The net status is not known
+uint3 NET_STATE_TRANSIT                        = 5          # The net is moving between states
 
-uint2 net_state                                             # The current net status
+uint3 net_state                                             # The current net status
 
-uint2 LOCK_STATE_LOCKED                        = 0          # The lock is locked
-uint2 LOCK_STATE_UNLOCKED                      = 1          # The lock is unlocked
-uint2 LOCK_STATE_STALL                         = 2          # The lock servo stalled
-uint2 LOCK_STATE_OPEN_CIRCUIT                  = 3          # The lock servo circuit is open
+uint3 LOCK_STATE_LOCKED                        = 0          # The lock is locked
+uint3 LOCK_STATE_UNLOCKED                      = 1          # The lock is unlocked
+uint3 LOCK_STATE_STALL                         = 2          # The lock servo stalled
+uint3 LOCK_STATE_OPEN_CIRCUIT                  = 3          # The lock servo circuit is open
+uint3 LOCK_STATE_UNKNOWN                       = 4          # The lock status is not known
+uint3 LOCK_STATE_TRANSIT                       = 5          # The lock is moving between states
 
-uint2 lock_state                                            # The current lock status
+uint3 lock_state                                            # The current lock status
 
 uint10 ERROR_OK                                = 0          # No error
 uint10 ERROR_ENCODER_ALIGNMENT_FAILURE         = 1          # Encoder alignment failed
@@ -77,5 +81,3 @@ float32 wire_extension_m                                    # The wire extension
 float32 load_speed_m_s                                      # The load speed in meters per second
 float32 force_on_wire_N                                     # The force on the wire in Newtons
 float32 estimated_weight_kg                                 # The estimated weight of the package in kg
-float32 fet_temp_degC                                       # The FET temperature in degrees Celsius
-float32 winding_temp_degC                                   # The motor winding temperature in degrees Celsius
