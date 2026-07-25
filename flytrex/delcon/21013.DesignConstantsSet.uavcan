@@ -17,3 +17,6 @@ float32 dead_wire_length_m                                   # The length of wir
 float32 gearbox_ratio                                        # Gearbox ratio
 bool reverse_phase_sequence                                  # Reverse the motor's phase sequence
 float32 torque_constant_Nm_A                                 # The motor's torque constant, in Newton-meters per Ampere
+
+float32 homing_max_torque_Nm                                 # The maximum torque allowed while homing, in Newton-meters
+uint32 homing_window_ms                                      # The time window used by the homing detector, in milliseconds

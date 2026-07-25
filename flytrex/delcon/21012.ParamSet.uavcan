@@ -38,4 +38,5 @@ float32 tg_position_setpoint                                  # Target position,
 float32 tg_acceleration                                       # Acceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
 float32 tg_deceleration                                       # Deceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
 float32 tg_halt_deceleration                                  # Halt deceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
+float32 tg_velocity                                           # Cruise velocity, in rad/s or m/s depending on load_not_shaft_control
 float32 tg_movement_time_s                                    # The time to complete the setup
