@@ -19,7 +19,6 @@ bool execute_not_hold                                        # false: hold the c
 float32 min_torque_limit                                     # Lower torque (Nm) or force (N) limit, depending on load_not_shaft_control
 float32 max_torque_limit                                     # Upper torque (Nm) or force (N) limit, depending on load_not_shaft_control
 
-bool ob_ack_event                                             # Acknowledge the observer's latched fault event
 bool ob_hold_on_event                                         # Hold the current action when the observer detects a fault
 float32 ob_neg_departure_error                                # "Negative Departure" detector threshold, in rad or m depending on load_not_shaft_control
 float32 ob_neg_departure_window_s                             # "Negative Departure" detector time window, in seconds

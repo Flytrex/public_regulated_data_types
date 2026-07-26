@@ -1,5 +1,10 @@
 # Delivery Controller: Hoist controller state report
 
+bool SAFETY_STATE_UNSAFE                       = 0          # The system is not in a safe state
+bool SAFETY_STATE_SAFE                         = 1          # The system is in a safe state
+
+bool safety_state                                           # The current safety state
+
 uint2 READINESS_NONE                           = 0          # No motion coordinate frame is currently active
 uint2 READINESS_ANGULAR                        = 1          # Operating in angular (shaft) coordinates
 uint2 READINESS_LINEAR                         = 2          # Operating in linear (load) coordinates
