@@ -1,22 +1,22 @@
-# Delivery Controller: Spool Controller constants
+# Delivery Controller: Design Constants
 
-uint4 OPERATION_RECALL                     = 0               # Read the constants configuration from the spool controller
-uint4 OPERATION_STORE                      = 1               # Store the constants configuration to the spool controller
-uint4 OPERATION_UNUSED                     = 2               # Currently unused value
-uint4 OPERATION_RESPONSE                   = 3               # A response that is sent from the node
+uint4 OPERATION_RECALL                     = 0
+uint4 OPERATION_STORE                      = 1
+uint4 OPERATION_UNUSED                     = 2
+uint4 OPERATION_RESPONSE                   = 3
 
-uint4 operation                                              # The operation to perform
-Error error                                                  # A returned error by the responder
-float32 spool_width_m                                        # The width of the spool in meters
-float32 wire_diameter_m                                      # Diameter of the wire in meters
-float32 spool_barrel_diameter_m                              # The diameter of the spool's barrel in meters
-float32 horizontal_packing                                   # Horizontal packing efficiency factor of the wound wire
-float32 radial_packing                                       # Radial packing efficiency factor of the wound wire
-float32 total_wire_length_m                                  # The wire's total length in meters
-float32 dead_wire_length_m                                   # The length of wire permanently wound on the spool that can't be deployed
-float32 gearbox_ratio                                        # Gearbox ratio
-bool reverse_phase_sequence                                  # Reverse the motor's phase sequence
-float32 torque_constant_Nm_A                                 # The motor's torque constant, in Newton-meters per Ampere
+uint4 operation
+Error error
+float32 spool_width_m
+float32 wire_diameter_m
+float32 spool_barrel_diameter_m
+float32 horizontal_packing
+float32 radial_packing
+float32 total_wire_length_m
+float32 dead_wire_length_m
+float32 gearbox_ratio
+bool reverse_phase_sequence
+float32 torque_constant_Nm_A
 
-float32 homing_max_torque_Nm                                 # The maximum torque allowed while homing, in Newton-meters
-uint32 homing_window_ms                                      # The time window used by the homing detector, in milliseconds
+float32 homing_max_torque_Nm
+uint32 homing_window_ms

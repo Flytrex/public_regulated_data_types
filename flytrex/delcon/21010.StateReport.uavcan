@@ -1,88 +1,88 @@
-# Delivery Controller: Hoist controller state report
+# Delivery Controller: Main State Report
 
-bool SAFETY_STATE_UNSAFE                       = 0          # The system is not in a safe state
-bool SAFETY_STATE_SAFE                         = 1          # The system is in a safe state
+bool SAFETY_STATE_UNSAFE                       = 0
+bool SAFETY_STATE_SAFE                         = 1
 
-bool safety_state                                           # The current safety state
+bool safety_state
 
-uint2 READINESS_NONE                           = 0          # No motion coordinate frame is currently active
-uint2 READINESS_ANGULAR                        = 1          # Operating in angular (shaft) coordinates
-uint2 READINESS_LINEAR                         = 2          # Operating in linear (load) coordinates
+uint2 READINESS_NONE                           = 0
+uint2 READINESS_ANGULAR                        = 1
+uint2 READINESS_LINEAR                         = 2
 
-uint2 readiness                                             # The current motion coordinate frame readiness
+uint2 readiness
 
-uint7 MODE_INITIAL                             = 0          # The mode after initialization
-uint7 MODE_ALIGN_ENCODER                       = 1          # The mode where the spool controller is aligning the encoder
-uint7 MODE_HOMING                              = 2          # Pool the hook until the endswitch engages and tension appears. On success, automatically shifts to IDLE_EMPTY
-uint7 MODE_RESERVED1                           = 3          # Reserved
-uint7 MODE_DIRECT_OVERRIDE                     = 4          # A service command to control the spool and servo controller as well as other internal functionality
-uint7 MODE_HALT                                = 5          # The mode where the spool controller halts the current wire movement
-uint7 MODE_GROUND_UNLOAD                       = 6          # Unload the package while the drone is on the ground with a package
-uint7 MODE_RESET                               = 7          # Perform a full reboot, thus returning to INITIAL state
-uint7 MODE_HOOK_STAGING                        = 8          # Perform and hold the hook lowering procedure
-uint7 MODE_LIFT_PACKAGE                        = 9          # Lifts the package. On success, shifts to IDLE_LOADED, otherwise to IDLE_EMPTY
-uint7 MODE_RESERVED2                           = 10         # Reserved
-uint7 MODE_LANDING                             = 11         # An emergency operation which requires the drone to land while a package is present or not
-uint7 MODE_PREPARE_FOR_DELIVERY                = 12         # Lift up the net before delivering the package
-uint7 MODE_DELIVERY                            = 13         # Lower the package until the wire has no tension, then pull it back up to the end
-uint7 MODE_RELEASE_WIRE                        = 14         # Unspool the wire until it is released
+uint7 MODE_INITIAL                             = 0
+uint7 MODE_ALIGN_ENCODER                       = 1
+uint7 MODE_HOMING                              = 2
+uint7 MODE_RESERVED1                           = 3
+uint7 MODE_DIRECT_OVERRIDE                     = 4
+uint7 MODE_HALT                                = 5
+uint7 MODE_GROUND_UNLOAD                       = 6
+uint7 MODE_RESET                               = 7
+uint7 MODE_HOOK_STAGING                        = 8
+uint7 MODE_LIFT_PACKAGE                        = 9
+uint7 MODE_RESERVED2                           = 10
+uint7 MODE_LANDING                             = 11
+uint7 MODE_PREPARE_FOR_DELIVERY                = 12
+uint7 MODE_DELIVERY                            = 13
+uint7 MODE_RELEASE_WIRE                        = 14
 
-uint7 mode                                                  # The current active mode
+uint7 mode
 
-uint2 MODE_EXECUTION_STATE_IN_PROGRESS         = 0          # The current mode is still being executed
-uint2 MODE_EXECUTION_STATE_DONE                = 1          # The current mode finished executing successfully
-uint2 MODE_EXECUTION_STATE_ERROR               = 2          # The current mode finished executing with an error
+uint2 MODE_EXECUTION_STATE_IN_PROGRESS         = 0
+uint2 MODE_EXECUTION_STATE_DONE                = 1
+uint2 MODE_EXECUTION_STATE_ERROR               = 2
 
-uint2 mode_execution_state                                  # The current mode's execution state
+uint2 mode_execution_state
 
-uint3 NET_STATE_UP                             = 0          # The net is up
-uint3 NET_STATE_DOWN                           = 1          # The net is down
-uint3 NET_STATE_STALL                          = 2          # The net servo stalled
-uint3 NET_STATE_OPEN_CIRCUIT                   = 3          # The net servo circuit is open
-uint3 NET_STATE_UNKNOWN                        = 4          # The net status is not known
-uint3 NET_STATE_TRANSIT                        = 5          # The net is moving between states
+uint3 NET_STATE_UP                             = 0
+uint3 NET_STATE_DOWN                           = 1
+uint3 NET_STATE_STALL                          = 2
+uint3 NET_STATE_OPEN_CIRCUIT                   = 3
+uint3 NET_STATE_UNKNOWN                        = 4
+uint3 NET_STATE_TRANSIT                        = 5
 
-uint3 net_state                                             # The current net status
+uint3 net_state
 
-uint3 LOCK_STATE_LOCKED                        = 0          # The lock is locked
-uint3 LOCK_STATE_UNLOCKED                      = 1          # The lock is unlocked
-uint3 LOCK_STATE_STALL                         = 2          # The lock servo stalled
-uint3 LOCK_STATE_OPEN_CIRCUIT                  = 3          # The lock servo circuit is open
-uint3 LOCK_STATE_UNKNOWN                       = 4          # The lock status is not known
-uint3 LOCK_STATE_TRANSIT                       = 5          # The lock is moving between states
+uint3 LOCK_STATE_LOCKED                        = 0
+uint3 LOCK_STATE_UNLOCKED                      = 1
+uint3 LOCK_STATE_STALL                         = 2
+uint3 LOCK_STATE_OPEN_CIRCUIT                  = 3
+uint3 LOCK_STATE_UNKNOWN                       = 4
+uint3 LOCK_STATE_TRANSIT                       = 5
 
-uint3 lock_state                                            # The current lock status
+uint3 lock_state
 
-uint10 ERROR_OK                                = 0          # No error
-uint10 ERROR_ENCODER_ALIGNMENT_FAILURE         = 1          # Encoder alignment failed
-uint10 ERROR_DESIGN_CONSTANT_SETUP_FAILURE     = 2          # Design constants setup failed
-uint10 ERROR_SPCC_FAILURE                      = 3          # SMCU communication failure
-uint10 ERROR_STATE_UNKNOWN                     = 4          # Hoist Controller state unknown
-uint10 ERROR_PARAMSET_NOT_FOUND                = 5          # The requested ParamSet was not found
-uint10 ERROR_LOCK_OPEN_CIRCUIT                 = 6          # The lock servo circuit is open
-uint10 ERROR_NET_OPEN_CIRCUIT                  = 7          # The net servo circuit is open
-uint10 ERROR_LOCK_STALL                        = 8          # The lock servo stalled
-uint10 ERROR_NET_STALL                         = 9          # The net servo stalled
-uint10 ERROR_ENCODER_UNRELIABLE                = 10         # The encoder reading is unreliable
-uint10 ERROR_NO_HOME                           = 11         # Homing has not completed
-uint10 ERROR_MOTOR_UNCOMMANDED_MOVEMENT        = 12         # The motor moved without being commanded to
-uint10 ERROR_TARGET_NOT_REACHED                = 13         # The commanded target was not reached
-uint10 ERROR_TENSION_NOT_REACHED               = 14         # The commanded tension was not reached
-uint10 ERROR_MOTOR_STALL                       = 15         # The motor stalled
-uint10 ERROR_WINDING_OVERTEMPERATURE           = 16         # The motor winding is overtemperature
-uint10 ERROR_FET_OVERTEMPERATURE               = 17         # The motor driver FET is overtemperature
-uint10 ERROR_TRAJECTORY_DEPARTURE              = 18         # The actual trajectory departed from the planned trajectory
-uint10 ERROR_MOTOR_OVERCURRENT                 = 19         # The motor drew excessive current
+uint10 ERROR_OK                                = 0
+uint10 ERROR_ENCODER_ALIGNMENT_FAILURE         = 1
+uint10 ERROR_DESIGN_CONSTANT_SETUP_FAILURE     = 2
+uint10 ERROR_SPCC_FAILURE                      = 3
+uint10 ERROR_STATE_UNKNOWN                     = 4
+uint10 ERROR_PARAMSET_NOT_FOUND                = 5
+uint10 ERROR_LOCK_OPEN_CIRCUIT                 = 6
+uint10 ERROR_NET_OPEN_CIRCUIT                  = 7
+uint10 ERROR_LOCK_STALL                        = 8
+uint10 ERROR_NET_STALL                         = 9
+uint10 ERROR_ENCODER_UNRELIABLE                = 10
+uint10 ERROR_NO_HOME                           = 11
+uint10 ERROR_MOTOR_UNCOMMANDED_MOVEMENT        = 12
+uint10 ERROR_TARGET_NOT_REACHED                = 13
+uint10 ERROR_TENSION_NOT_REACHED               = 14
+uint10 ERROR_MOTOR_STALL                       = 15
+uint10 ERROR_WINDING_OVERTEMPERATURE           = 16
+uint10 ERROR_FET_OVERTEMPERATURE               = 17
+uint10 ERROR_TRAJECTORY_DEPARTURE              = 18
+uint10 ERROR_MOTOR_OVERCURRENT                 = 19
 
-uint10 error                                                # The current error, if any
+uint10 error
 
-uint2 PACKAGE_STATE_UNKNOWN                    = 0          # The package state is not known
-uint2 PACKAGE_STATE_EMPTY                      = 1          # There is no package on the hook
-uint2 PACKAGE_STATE_LOADED                     = 2          # There is a package on the hook
+uint2 PACKAGE_STATE_UNKNOWN                    = 0
+uint2 PACKAGE_STATE_EMPTY                      = 1
+uint2 PACKAGE_STATE_LOADED                     = 2
 
-uint2 package_state                                         # The current package status
+uint2 package_state
 
-float32 wire_extension_m                                    # The wire extension in meters
-float32 load_speed_m_s                                      # The load speed in meters per second
-float32 force_on_wire_N                                     # The force on the wire in Newtons
-float32 estimated_weight_kg                                 # The estimated weight of the package in kg
+float32 wire_extension_m
+float32 load_speed_m_s
+float32 force_on_wire_N
+float32 estimated_weight_kg

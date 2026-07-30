@@ -1,35 +1,35 @@
-# Delivery Controller: Hoist controller auxiliary state report
+# Delivery Controller: Auxiliary State Report
 
-float32 fet_temp_degC                                       # The FET temperature in degrees Celsius
-float32 winding_temp_degC                                   # The motor winding temperature in degrees Celsius
+float32 fet_temp_degC
+float32 winding_temp_degC
 
-uint8 submode                                               # The current active submode
+uint8 submode
 
-bool ob_target_reached                                      # The observer's "Target Reached" detector status
-bool ob_tension_reached                                      # The observer's "Tension Reached" detector status
-bool ob_stall_detected                                       # The observer's "Stall" detector status
-bool ob_pos_departure                                        # The observer's "Positive Departure" detector status
-bool ob_neg_departure                                        # The observer's "Negative Departure" detector status
-bool ob_autostop                                             # The observer's autostop status
+bool ob_target_reached
+bool ob_tension_reached
+bool ob_stall_detected
+bool ob_pos_departure
+bool ob_neg_departure
+bool ob_autostop
 
-float32 shaft_pos_rad                                        # The shaft position in radian
-float32 shaft_speed_rad_s                                    # The shaft's rotational speed, in radians per second
-float32 shaft_torque_Nm                                      # The torque at the shaft, in Newton-meters
-float32 motor_pos_rad                                        # The motor position in radian
-float32 motor_speed_rad_s                                    # The motor's rotational speed, in radians per second
-float32 motor_torque_Nm                                      # The torque at the motor, in Newton-meters
+float32 shaft_pos_rad
+float32 shaft_speed_rad_s
+float32 shaft_torque_Nm
+float32 motor_pos_rad
+float32 motor_speed_rad_s
+float32 motor_torque_Nm
 
-uint8 encoder_agc_value                                      # The encoder's automatic gain control value
-float32 Iq_max_A                                              # The maximum allowed quadrature current, in Amperes
-float32 Iq_min_A                                              # The minimum allowed quadrature current, in Amperes
-float32 Iq_requested_A                                        # The requested quadrature current, in Amperes
-float32 Iq_A                                                  # The actual quadrature current, in Amperes
-float32 dc_link_current_A                                     # The DC link current, in Amperes
-float32 dc_link_voltage_V                                     # The DC link voltage, in Volts
-uint8 modulation_index                                        # The modulation index, in percent (0..100)
-float32 Valpha_V                                              # The alpha-axis voltage, in Volts
-float32 Vbeta_V                                               # The beta-axis voltage, in Volts
-float32 power_W                                               # The motor power, in Watts
-float32 energy_counter_J                                      # The energy counter, in Joules
-float32 net_current_A                                         # The net servo current, in Amperes
-float32 lock_current_A                                        # The lock servo current, in Amperes
+uint8 encoder_agc_value
+float32 Iq_max_A
+float32 Iq_min_A
+float32 Iq_requested_A
+float32 Iq_A
+float32 dc_link_current_A
+float32 dc_link_voltage_V
+uint8 modulation_index
+float32 Valpha_V
+float32 Vbeta_V
+float32 power_W
+float32 energy_counter_J
+float32 net_current_A
+float32 lock_current_A

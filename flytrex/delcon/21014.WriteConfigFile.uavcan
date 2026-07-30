@@ -1,5 +1,5 @@
-# DelCon (delivery controller) write configuration file (a broadcast message that is used for send/response)
+# Delivery Controller: write config file command
 
-uint8 destination_node_id                                    # The destination's node ID
-Error error                                                  # A returned error by the responder
-Path image_file_remote_path                                  # The file to upload to the DelCon
+uint8 destination_node_id
+Error error
+Path image_file_remote_path

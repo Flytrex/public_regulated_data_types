@@ -1,43 +1,42 @@
-# Delivery Controller: parameter set
-# Not all fields are used by all modes and submodes. Read the documentation.
+# Delivery Controller: Parameter Set
 
-uint4 OPERATION_RECALL                     = 0                # Read a ParamSet configuration from the Delivery Controller
-uint4 OPERATION_STORE                      = 1                # Store a ParamSet configuration to the Delivery Controller
-uint4 OPERATION_EXECUTE                    = 2                # Execute the ParamSet without storing it
-uint4 OPERATION_RESPONSE                   = 3                # The Delivery Controller's response
+uint4 OPERATION_RECALL                     = 0
+uint4 OPERATION_STORE                      = 1
+uint4 OPERATION_EXECUTE                    = 2
+uint4 OPERATION_RESPONSE                   = 3
 
-uint4 operation                                               # The operation to perform
-Error error                                                   # A returned error by the responder
-uint16 param_id                                               # The ParamSet ID number
+uint4 operation
+Error error
+uint16 param_id
 
-bool energize                                                 # Energize the motor
+bool energize
 
 bool SPOOL_SHAFT_CONTROL                   = 0
 bool SPOOL_LOAD_CONTROL                    = 1
-bool load_not_shaft_control                                   # false: shaft control (SPOOL_SHAFT_CONTROL); true: load control (SPOOL_LOAD_CONTROL)
-bool execute_not_hold                                         # false: hold the current action; true: execute the current action
+bool load_not_shaft_control
+bool execute_not_hold
 
-float32 min_effort_limit                                      # Lower torque (N·m) or force (N) limit, depending on load_not_shaft_control.
-                                                              # The negative direction is spooling, the positive direction is extending
-float32 max_effort_limit                                      # Upper torque (N·m) or force (N) limit, depending on load_not_shaft_control.
+float32 min_effort_limit
 
-bool ob_hold_on_event                                         # Hold the spool when the observer detects an event
-float32 ob_neg_departure_error                                # "Negative Departure" detector threshold, in rad or m depending on load_not_shaft_control
-float32 ob_neg_departure_window_s                             # "Negative Departure" detector time window, in seconds
-float32 ob_pos_departure_error                                # "Positive Departure" detector threshold, in rad or m depending on load_not_shaft_control
-float32 ob_pos_departure_window_s                             # "Positive Departure" detector time window, in seconds
-float32 ob_stall_min_speed                                    # "Stall" detector minimum speed threshold, in rad/s or m/s depending on load_not_shaft_control
-float32 ob_stall_window_s                                     # "Stall" detector time window, in seconds
-float32 ob_target_margin                                      # "Target Reached" detector margin, in rad or m depending on load_not_shaft_control
-float32 ob_on_target_window_s                                 # "Target Reached" detector time window, in seconds
-float32 ob_tension_min_effort                                 # "Tension Reached" detector lower threshold, in Nm or N depending on load_not_shaft_control
-float32 ob_tension_max_effort                                 # "Tension Reached" detector upper threshold, in Nm or N depending on load_not_shaft_control
-float32 ob_tension_window_s                                   # "Tension Reached" detector time window, in seconds
-bool ob_autostop                                              # Hold when the limit switch activates
+float32 max_effort_limit
 
-float32 tg_position_setpoint                                  # Target position, in rad or m depending on load_not_shaft_control
-float32 tg_acceleration                                       # Acceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
-float32 tg_deceleration                                       # Deceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
-float32 tg_halt_deceleration                                  # Halt deceleration, in rad/s^2 or m/s^2 depending on load_not_shaft_control
-float32 tg_velocity                                           # Cruise velocity, in rad/s or m/s depending on load_not_shaft_control
-float32 tg_movement_time_s                                    # Trajectory execution time
+bool ob_hold_on_event
+float32 ob_neg_departure_error
+float32 ob_neg_departure_window_s
+float32 ob_pos_departure_error
+float32 ob_pos_departure_window_s
+float32 ob_stall_min_speed
+float32 ob_stall_window_s
+float32 ob_target_margin
+float32 ob_on_target_window_s
+float32 ob_tension_min_effort
+float32 ob_tension_max_effort
+float32 ob_tension_window_s
+bool ob_autostop
+
+float32 tg_position_setpoint
+float32 tg_acceleration
+float32 tg_deceleration
+float32 tg_halt_deceleration
+float32 tg_velocity
+float32 tg_movement_time_s
