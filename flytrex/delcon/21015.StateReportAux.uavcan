@@ -27,8 +27,8 @@ float32 Iq_A
 float32 dc_link_current_A
 float32 dc_link_voltage_V
 uint8 modulation_index
-float32 Valpha_V
-float32 Vbeta_V
+float32 Vq_V
+float32 Vd_V
 float32 power_W
 float32 energy_counter_J
 float32 net_current_A
