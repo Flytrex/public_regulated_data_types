@@ -11,22 +11,6 @@ uint2 READINESS_LINEAR                         = 2
 
 uint2 readiness
 
-uint7 MODE_INITIAL                             = 0
-uint7 MODE_ALIGN_ENCODER                       = 1
-uint7 MODE_HOMING                              = 2
-uint7 MODE_RESERVED1                           = 3
-uint7 MODE_DIRECT_OVERRIDE                     = 4
-uint7 MODE_HALT                                = 5
-uint7 MODE_GROUND_UNLOAD                       = 6
-uint7 MODE_RESET                               = 7
-uint7 MODE_HOOK_STAGING                        = 8
-uint7 MODE_LIFT_PACKAGE                        = 9
-uint7 MODE_RESERVED2                           = 10
-uint7 MODE_LANDING                             = 11
-uint7 MODE_PREPARE_FOR_DELIVERY                = 12
-uint7 MODE_DELIVERY                            = 13
-uint7 MODE_RELEASE_WIRE                        = 14
-
 uint7 mode
 
 uint2 MODE_EXECUTION_STATE_IN_PROGRESS         = 0
@@ -52,27 +36,6 @@ uint3 LOCK_STATE_UNKNOWN                       = 4
 uint3 LOCK_STATE_TRANSIT                       = 5
 
 uint3 lock_state
-
-uint10 ERROR_OK                                = 0
-uint10 ERROR_ENCODER_ALIGNMENT_FAILURE         = 1
-uint10 ERROR_DESIGN_CONSTANT_SETUP_FAILURE     = 2
-uint10 ERROR_SPCC_FAILURE                      = 3
-uint10 ERROR_STATE_UNKNOWN                     = 4
-uint10 ERROR_PARAMSET_NOT_FOUND                = 5
-uint10 ERROR_LOCK_OPEN_CIRCUIT                 = 6
-uint10 ERROR_NET_OPEN_CIRCUIT                  = 7
-uint10 ERROR_LOCK_STALL                        = 8
-uint10 ERROR_NET_STALL                         = 9
-uint10 ERROR_ENCODER_UNRELIABLE                = 10
-uint10 ERROR_NO_HOME                           = 11
-uint10 ERROR_MOTOR_UNCOMMANDED_MOVEMENT        = 12
-uint10 ERROR_TARGET_NOT_REACHED                = 13
-uint10 ERROR_TENSION_NOT_REACHED               = 14
-uint10 ERROR_MOTOR_STALL                       = 15
-uint10 ERROR_WINDING_OVERTEMPERATURE           = 16
-uint10 ERROR_FET_OVERTEMPERATURE               = 17
-uint10 ERROR_TRAJECTORY_DEPARTURE              = 18
-uint10 ERROR_MOTOR_OVERCURRENT                 = 19
 
 uint10 error
 
