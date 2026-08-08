@@ -32,7 +32,6 @@ float32 ob_on_target_window_s
 float32 ob_tension_min_effort
 float32 ob_tension_max_effort
 float32 ob_tension_window_s
-bool ob_autostop
 
 float32 tg_position_setpoint
 float32 tg_acceleration

@@ -10,7 +10,7 @@ bool ob_tension_reached
 bool ob_stall_detected
 bool ob_pos_departure
 bool ob_neg_departure
-bool ob_autostop
+bool limit_switch
 
 float32 shaft_pos_rad
 float32 shaft_speed_rad_s
