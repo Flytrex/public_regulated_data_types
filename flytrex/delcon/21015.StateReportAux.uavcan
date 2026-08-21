@@ -13,23 +13,25 @@ bool ob_neg_departure
 bool limit_switch
 
 float32 shaft_pos_rad
-float32 shaft_speed_rad_s
-float32 shaft_torque_Nm
+float16 shaft_speed_rad_s
+float16 shaft_torque_Nm
 float32 motor_pos_rad
-float32 motor_speed_rad_s
-float32 motor_torque_Nm
+float16 motor_speed_rad_s
+float16 motor_torque_Nm
+
+float16 tg_setpoint
 
 uint8 encoder_agc_value
-float32 Iq_max_A
-float32 Iq_min_A
-float32 Iq_requested_A
-float32 Iq_A
-float32 dc_link_current_A
-float32 dc_link_voltage_V
+float16 Iq_max_A
+float16 Iq_min_A
+float16 Iq_requested_A
+float16 Iq_A
+float16 dc_link_current_A
+float16 dc_link_voltage_V
 uint8 modulation_index
-float32 Vq_V
-float32 Vd_V
-float32 power_W
+float16 Vq_V
+float16 Vd_V
+float16 power_W
 float32 energy_counter_J
-float32 net_current_A
-float32 lock_current_A
+float16 net_current_A
+float16 lock_current_A
