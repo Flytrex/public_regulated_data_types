@@ -45,7 +45,7 @@ uint2 PACKAGE_STATE_LOADED                     = 2
 
 uint2 package_state
 
-float32 wire_extension_m
-float32 load_speed_m_s
-float32 force_on_wire_N
-float32 estimated_weight_kg
+float16 wire_extension_m
+float16 load_speed_m_s
+float16 force_on_wire_N
+float16 estimated_weight_kg
