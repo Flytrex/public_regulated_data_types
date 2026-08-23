@@ -21,6 +21,8 @@ float16 motor_torque_Nm
 
 float16 tg_setpoint
 
+float16 ground_detector_N
+
 uint8 encoder_agc_value
 float16 Iq_max_A
 float16 Iq_min_A
