@@ -7,7 +7,7 @@ uint8 submode
 
 bool ob_target_reached
 bool ob_tension_reached
-bool ob_stall_detected
+bool ob_stationary
 bool ob_pos_departure
 bool ob_neg_departure
 bool limit_switch
