@@ -1,7 +1,7 @@
 # Delivery Controller: Auxiliary State Report
 
-float32 fet_temp_degC
-float32 winding_temp_degC
+float16 fet_temp_degC
+float16 winding_temp_degC
 
 uint8 submode
 
