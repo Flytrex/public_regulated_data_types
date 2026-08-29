@@ -25,8 +25,8 @@ float32 ob_neg_departure_error
 float32 ob_neg_departure_window_s
 float32 ob_pos_departure_error
 float32 ob_pos_departure_window_s
-float32 ob_stall_min_speed
-float32 ob_stall_window_s
+float32 ob_stationary_min_speed
+float32 ob_stationary_window_s
 float32 ob_target_margin
 float32 ob_on_target_window_s
 float32 ob_tension_min_effort
