@@ -17,6 +17,8 @@ uint2 MODE_EXECUTION_STATE_IN_PROGRESS         = 0
 uint2 MODE_EXECUTION_STATE_DONE                = 1
 uint2 MODE_EXECUTION_STATE_ERROR               = 2
 
+uint7 current_latch_value
+
 uint2 mode_execution_state
 
 uint3 NET_STATE_UP                             = 0
