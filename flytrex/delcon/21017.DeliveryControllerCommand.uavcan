@@ -1,0 +1,5 @@
+# Delivery Controller Command
+
+uint7 latch
+uint7 mode
+float16 wire_extension_m
