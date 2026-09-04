@@ -1,0 +1,5 @@
+# Delivery Controller: write config file command
+
+uint8 destination_node_id
+Error error
+Path image_file_remote_path

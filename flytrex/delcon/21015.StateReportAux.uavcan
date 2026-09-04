@@ -1,0 +1,39 @@
+# Delivery Controller: Auxiliary State Report
+
+float16 fet_temp_degC
+float16 winding_temp_degC
+
+uint8 submode
+
+bool ob_target_reached
+bool ob_tension_reached
+bool ob_stationary
+bool ob_pos_departure
+bool ob_neg_departure
+bool limit_switch
+
+float32 shaft_pos_rad
+float16 shaft_speed_rad_s
+float16 shaft_torque_Nm
+float32 motor_pos_rad
+float16 motor_speed_rad_s
+float16 motor_torque_Nm
+
+float16 tg_setpoint
+
+float16 ground_detector_N
+
+uint8 encoder_agc_value
+float16 Iq_max_A
+float16 Iq_min_A
+float16 Iq_requested_A
+float16 Iq_A
+float16 dc_link_current_A
+float16 dc_link_voltage_V
+uint8 modulation_index
+float16 Vq_V
+float16 Vd_V
+float16 power_W
+float32 energy_counter_J
+float16 net_current_A
+float16 lock_current_A

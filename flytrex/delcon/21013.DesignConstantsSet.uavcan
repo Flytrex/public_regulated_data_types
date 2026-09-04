@@ -1,0 +1,35 @@
+# Delivery Controller: Design Constants
+
+uint4 OPERATION_RECALL                     = 0
+uint4 OPERATION_STORE                      = 1
+uint4 OPERATION_UNUSED                     = 2
+uint4 OPERATION_RESPONSE                   = 3
+
+uint4 operation
+Error error
+float32 spool_width_m
+float32 wire_diameter_m
+float32 spool_barrel_diameter_m
+float32 horizontal_packing
+float32 radial_packing
+float32 total_wire_length_m
+float32 dead_wire_length_m
+float32 gearbox_ratio
+bool reverse_phase_sequence
+float32 torque_constant_Nm_A
+
+float32 homing_max_torque_Nm
+uint32 homing_window_ms
+
+uint8 maneuver_retry_limit
+float32 safety_wire_length_m
+float32 package_force_dynamic_reserve_N
+float32 min_package_pull_force_N
+float32 delivery_extension_offset_m
+float32 delivery_ground_detector_time_constant_s
+float32 delivery_ground_detector_arm_agl_m
+float32 delivery_ground_detect_window_s
+float32 delivery_package_detector_window_s
+uint8 delivery_max_retract_attempts
+float32 delivery_unhook_offset_m
+float32 min_package_weight_N
