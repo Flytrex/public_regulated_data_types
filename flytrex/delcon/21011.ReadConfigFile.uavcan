@@ -1,0 +1,4 @@
+# Delivery Controller: read config file command
+
+uint8 destination_node_id
+Error error
