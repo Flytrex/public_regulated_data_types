@@ -47,6 +47,12 @@ uint2 PACKAGE_STATE_LOADED                     = 2
 
 uint2 package_state
 
+uint2 GROUND_PROXIMITY_INACTIVE                = 0       # In modes other than DELIVERY
+uint2 GROUND_PROXIMITY_AWAY                    = 1       # Hook is far from the ground
+uint2 GROUND_PROXIMITY_PROXIMITY               = 2       # Hook is close to the ground
+
+uint2 ground_proximity                                   # Specific to DELIVERY mode
+
 float16 wire_extension_m
 float16 load_speed_m_s
 float16 force_on_wire_N
