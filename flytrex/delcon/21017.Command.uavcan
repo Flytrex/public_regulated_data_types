@@ -3,3 +3,13 @@
 uint7 latch
 uint7 mode
 float16 wire_extension_m
+
+uint4 DOCK_PHASE_NONE                 = 0
+uint4 DOCK_PHASE_APP_BEFORE_THRESHOLD = 1
+uint4 DOCK_PHASE_APP_AFTER_THRESHOLD  = 2
+uint4 DOCK_PHASE_APP_LANDING          = 3
+uint4 DOCK_PHASE_APP_LANDED           = 4
+uint4 DOCK_PHASE_DEP_TAKEOFF          = 5
+uint4 DOCK_PHASE_DEP_BEFORE_THRESHOLD = 6
+uint4 DOCK_PHASE_DEP_AFTER_THRESHOLD  = 7
+uint4 dock_phase
